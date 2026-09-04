@@ -328,35 +328,79 @@ footer {
   <div id="speakResult" class="result"></div>
 
 </section>
-
 <!-- IELTS -->
-
 <section id="ielts" class="panel">
+  <h2>🎯 IELTS Speaking Examiner</h2>
 
-  <h2>🎯 IELTS Speaking</h2>
+  <p>
+    Practice IELTS Speaking with Part 1, Part 2 and Part 3.
+    Speak naturally and get feedback.
+  </p>
 
-  <p>Original IELTS-style practice questions.</p>
+  <div class="voice">
+    <button class="primary" onclick="startIELTSTest()">
+      ▶️ Start IELTS Test
+    </button>
 
-  <div class="question" id="ieltsQuestion">
-    Do you enjoy learning English? Why or why not?
+    <button class="secondary" onclick="speakIELTS()">
+      🔊 Listen
+    </button>
   </div>
 
-  <textarea id="ieltsAnswer"
-    placeholder="Answer as if you were in the IELTS Speaking test..."></textarea>
+  <div class="question" id="ieltsPart">
+    Part 1
+  </div>
 
-  <br><br>
+  <div class="question" id="ieltsQuestion">
+    Let's begin. Do you enjoy learning English? Why or why not?
+  </div>
 
-  <button class="primary" onclick="nextIELTS()">
+  <div id="ieltsTimer" class="result">
+    ⏱️ 00:00
+  </div>
+
+  <button class="primary" id="ieltsMicBtn" onclick="toggleIELTSRecording()">
+    🎙️ Start Speaking
+  </button>
+
+  <button class="secondary" onclick="stopIELTSRecording()">
+    ⏹ Stop
+  </button>
+
+  <div id="ieltsTranscript" class="result">
+    Your spoken answer will appear here...
+  </div>
+
+  <button class="primary" onclick="nextIELTSQuestion()">
     Next Question →
   </button>
 
-  <button class="secondary" onclick="speakIELTS()">
-    🔊 Listen
+  <div id="ieltsResult" class="result"></div>
+</section>
+-- 
+<!-- STUDY -->
+
+<section id="study" class="panel">
+
+  <h2>📚 StudyAI</h2>
+
+  <p>
+    Enter something you want to understand.
+  </p>
+
+  <br>
+
+  <textarea id="studyText"
+    placeholder="Example: Explain photosynthesis in simple English..."></textarea>
+
+  <br><br>
+
+  <button class="primary" onclick="studyExplain()">
+    Explain it
   </button>
 
-  <div id="ieltsResult" class="result"></div>
-
-</section>
+  <div id="studyResult" class="result"></div>
+  
 
 <!-- STUDY -->
 
@@ -651,8 +695,178 @@ function missionDone() {
     'Next mission unlocked.';
 
 }
+// IELTS Speaking Practice
+let ieltsQuestions = [
+  {
+    part: "Part 1",
+    question: "Do you enjoy learning English? Why or why not?"
+  },
+  {
+    part: "Part 1",
+    question: "What do you usually do in your free time?"
+  },
+  {
+    part: "Part 1",
+    question: "Do you prefer studying alone or with other people?"
+  },
+  {
+    part: "Part 2",
+    question: "Describe a skill you would like to learn in the future."
+  },
+  {
+    part: "Part 3",
+    question: "Do you think technology has changed the way people learn?"
+  }
+];
 
-</script>
+let currentIELTSQuestion = 0;
+let ieltsTimerInterval;
+let ieltsSeconds = 0;
+let ieltsRecognition = null;
+let ieltsIsRecording = false;
+
+function startIELTSTest() {
+  currentIELTSQuestion = 0;
+  ieltsSeconds = 0;
+  document.getElementById("ieltsResult").innerHTML =
+    "🎯 IELTS Speaking test started.";
+  showIELTSQuestion();
+  startIELTSTimer();
+}
+
+function showIELTSQuestion() {
+  const item = ieltsQuestions[currentIELTSQuestion];
+  document.getElementById("ieltsPart").textContent = item.part;
+  document.getElementById("ieltsQuestion").textContent = item.question;
+  document.getElementById("ieltsTranscript").textContent =
+    "Your spoken answer will appear here...";
+}
+
+function startIELTSTimer() {
+  clearInterval(ieltsTimerInterval);
+
+  ieltsTimerInterval = setInterval(function () {
+    ieltsSeconds++;
+
+    const minutes = Math.floor(ieltsSeconds / 60);
+    const seconds = ieltsSeconds % 60;
+
+    document.getElementById("ieltsTimer").textContent =
+      "⏱️ " +
+      String(minutes).padStart(2, "0") +
+      ":" +
+      String(seconds).padStart(2, "0");
+  }, 1000);
+}
+
+function speakIELTS() {
+  const question = document.getElementById("ieltsQuestion").textContent;
+
+  if ("speechSynthesis" in window) {
+    window.speechSynthesis.cancel();
+
+    const speech = new SpeechSynthesisUtterance(question);
+    speech.lang = "en-US";
+    speech.rate = 0.9;
+    speech.pitch = 1;
+
+    window.speechSynthesis.speak(speech);
+  }
+}
+
+function toggleIELTSRecording() {
+  if (ieltsIsRecording) {
+    stopIELTSRecording();
+  } else {
+    startIELTSRecording();
+  }
+}
+
+function startIELTSRecording() {
+  const SpeechRecognition =
+    window.SpeechRecognition || window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    alert("Please try Google Chrome for microphone speech recognition.");
+    return;
+  }
+
+  ieltsRecognition = new SpeechRecognition();
+  ieltsRecognition.lang = "en-US";
+  ieltsRecognition.continuous = true;
+  ieltsRecognition.interimResults = true;
+
+  ieltsIsRecording = true;
+
+  document.getElementById("ieltsMicBtn").textContent =
+    "🎙️ Listening...";
+
+  ieltsRecognition.onresult = function (event) {
+    let text = "";
+
+    for (let i = event.resultIndex; i < event.results.length; i++) {
+      text += event.results[i][0].transcript + " ";
+    }
+
+    document.getElementById("ieltsTranscript").textContent =
+      text.trim() || "Listening...";
+  };
+
+  ieltsRecognition.onerror = function () {
+    document.getElementById("ieltsResult").innerHTML =
+      "⚠️ Microphone or speech recognition error.";
+  };
+
+  ieltsRecognition.onend = function () {
+    if (ieltsIsRecording) {
+      try {
+        ieltsRecognition.start();
+      } catch (e) {}
+    }
+  };
+
+  ieltsRecognition.start();
+
+  document.getElementById("ieltsResult").innerHTML =
+    "🎙️ I'm listening. Speak naturally.";
+}
+
+function stopIELTSRecording() {
+  ieltsIsRecording = false;
+
+  if (ieltsRecognition) {
+    ieltsRecognition.stop();
+    ieltsRecognition = null;
+  }
+
+  document.getElementById("ieltsMicBtn").textContent =
+    "🎙️ Start Speaking";
+
+  document.getElementById("ieltsResult").innerHTML =
+    "✅ Speaking finished.";
+}
+
+function nextIELTSQuestion() {
+  stopIELTSRecording();
+
+  currentIELTSQuestion++;
+
+  if (currentIELTSQuestion >= ieltsQuestions.length) {
+    clearInterval(ieltsTimerInterval);
+
+    document.getElementById("ieltsResult").innerHTML =
+      "🎉 Practice test completed!";
+
+    currentIELTSQuestion = 0;
+    return;
+  }
+
+  showIELTSQuestion();
+
+  document.getElementById("ieltsResult").innerHTML =
+    "➡️ Next IELTS question.";
+  }
+</script>//   
 
 </body>
       </html>
