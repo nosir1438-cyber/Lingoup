@@ -357,131 +357,180 @@ footer {
 
 
 <!-- =========================
-     IELTS
+     IELTS AI EXAMINER
 ========================= -->
 
-<section
-  id="ielts"
-  class="card"
->
+<section id="ielts" class="card">
 
-  <h2>
-    🎓 IELTS Speaking Examiner
-  </h2>
+  <h2>🎓 IELTS Speaking AI Examiner</h2>
 
-  <p>
-    Practice a realistic IELTS-style
-    speaking test.
+  <p id="ieltsStatus">
+    The examiner will guide you through the speaking test.
   </p>
 
+  <div id="ieltsStage" style="margin-top:20px;">
 
-  <button
-    class="btn"
-    onclick="startIELTSTest()"
-  >
-    🚀 Start IELTS Test
-  </button>
-
-
-  <button
-    class="btn"
-    onclick="speakIELTS()"
-  >
-    🔊 Listen
-  </button>
-
-
-  <div style="margin-top:20px">
-
-
-    <span
-      id="ieltsPart"
-      class="ielts-part"
-    >
-      Part 1
-    </span>
-
-
-    <div
-      id="ieltsQuestion"
-      class="ielts-question"
-    >
-      Click "Start IELTS Test"
-      to begin.
+    <div id="ieltsPart" class="ielts-part">
+      IELTS Speaking
     </div>
 
+    <div id="ieltsExaminer" class="ielts-question">
+      Good morning. Let's begin the IELTS Speaking test.
+    </div>
 
-    <div
-      id="ieltsTimer"
-      class="timer"
-    >
+    <div id="ieltsTimer" class="timer">
       ⏱️ 00:00
     </div>
 
+    <div id="ieltsPreparation"
+         style="display:none;
+                padding:15px;
+                margin:15px 0;
+                border-radius:12px;
+                background:#f3f4f6;">
+    </div>
 
-    <div class="controls">
+    <div id="ieltsAnswer"
+         style="margin-top:15px;
+                padding:15px;
+                border-radius:12px;
+                background:#f8fafc;">
+      Your answer will appear here...
+    </div>
 
+    <div style="margin-top:15px;">
+
+      <button
+        id="ieltsStartBtn"
+        class="btn"
+        onclick="startRealIELTS()">
+        🚀 Start IELTS Test
+      </button>
+
+      <button
+        id="ieltsListenBtn"
+        class="btn"
+        onclick="speakExaminer()"
+        style="display:none;">
+        🔊 Examiner
+      </button>
 
       <button
         id="ieltsMicBtn"
         class="btn"
-        onclick="toggleIELTSRecording()"
-      >
+        onclick="toggleIELTSMic()"
+        style="display:none;">
         🎙️ Start Speaking
       </button>
 
-
       <button
+        id="ieltsRepeatBtn"
         class="btn"
-        onclick="stopIELTSRecording()"
-      >
-        ⏹️ Stop
+        onclick="repeatAnswer()"
+        style="display:none;">
+        🔁 Repeat
       </button>
 
-
       <button
+        id="ieltsNextBtn"
         class="btn"
         onclick="nextIELTSQuestion()"
-      >
+        style="display:none;">
         ➡️ Next Question
       </button>
 
-
     </div>
-
-
-    <div
-      id="ieltsTranscript"
-      class="result"
-    >
-      Your spoken answer
-      will appear here...
-    </div>
-
-
-    <div
-      id="ieltsResult"
-      class="result"
-    >
-      IELTS practice is ready.
-    </div>
-
 
   </div>
 
+  <div id="ieltsFeedback"
+       style="display:none;
+              margin-top:25px;
+              padding:20px;
+              border-radius:16px;
+              background:#eef6ff;">
 
-  <p class="small">
+    <h3>🤖 AI Speaking Feedback</h3>
 
-    This prototype uses browser speech
-    recognition for transcription.
+    <div id="feedbackGrammar"></div>
 
-    Real AI examiner, scoring and detailed
-    correction will be connected through
-    a secure backend in the next stages.
+    <div id="feedbackVocabulary"
+         style="margin-top:12px;"></div>
 
-  </p>
+    <div id="feedbackFluency"
+         style="margin-top:12px;"></div>
 
-</section>
+    <div id="feedbackPronunciation"
+         style="margin-top:12px;"></div>
+
+    <div id="feedbackStructure"
+         style="margin-top:12px;"></div>
+
+    <div id="feedbackNatural"
+         style="margin-top:12px;"></div>
+
+    <div id="feedbackEmotion"
+         style="margin-top:12px;"></div>
+
+    <div id="feedbackImproved"
+         style="margin-top:18px;
+                padding:15px;
+                border-radius:12px;
+                background:white;">
+    </div>
+
+    <button
+      id="feedbackSpeakBtn"
+      class="btn"
+      onclick="speakImprovedAnswer()"
+      style="margin-top:15px;">
+      🔊 Listen to Natural Version
+    </button>
+
+  </div>
+
+  <div id="ieltsComparison"
+       style="display:none;
+              margin-top:20px;
+              padding:20px;
+              border-radius:16px;
+              background:#f6f7f9;">
+
+    <h3>🔄 Compare Your Attempts</h3>
+
+    <div id="firstAttempt"></div>
+
+    <div id="secondAttempt"
+         style="margin-top:15px;"></div>
+
+    <div id="comparisonResult"
+         style="margin-top:15px;"></div>
+
+  </div>
+
+  <div id="ieltsFinalResult"
+       style="display:none;
+              margin-top:20px;
+              padding:20px;
+              border-radius:12px;
+              background:#fff7ed;">
+
+    <h3>🏆 IELTS Speaking Report</h3>
+
+    <div id="finalBand"></div>
+
+    <div id="finalStrengths"
+         style="margin-top:12px;"></div>
+
+    <div id="finalWeaknesses"
+         style="margin-top:12px;"></div>
+
+    <div id="finalAdvice"
+         style="margin-top:12px;"></div>
+
+  </div>
+
+       </section>
 
 
 
@@ -1170,41 +1219,144 @@ function nextIELTSQuestion() {
 
   currentIELTSQuestion++;
 
+// ========================================
+// IELTS AI EXAMINER — QUESTION BANK
+// ========================================
 
-  if (
-    currentIELTSQuestion >=
-    ieltsQuestions.length
-  ) {
+const ieltsQuestionBank = {
 
-    clearInterval(
-      ieltsTimerInterval
-    );
+  part1: [
+    "Do you enjoy learning English? Why?",
+    "What do you usually do after your classes?",
+    "Do you prefer mornings or evenings?",
+    "How do you usually spend your weekends?",
+    "What kind of music do you enjoy listening to?",
+    "Do you like reading books?",
+    "What kind of books do you find interesting?",
+    "Do you enjoy cooking?",
+    "How often do you use your phone?",
+    "Do you prefer studying alone or with other people?",
+    "What do you usually do when you feel tired?",
+    "Do you like visiting new places?",
+    "What is your favorite place in your hometown?",
+    "Do you enjoy spending time with your family?",
+    "How often do you meet your friends?",
+    "What do you usually do in your free time?",
+    "Do you prefer staying at home or going out?",
+    "What kind of weather do you like?",
+    "Do you enjoy taking photographs?",
+    "What skill would you like to improve?",
+    "Do you like learning new things?",
+    "How important is English in your daily life?",
+    "Do you usually make plans for your day?",
+    "What part of your day do you enjoy most?",
+    "Do you like shopping?",
+    "Do you prefer online shopping or shopping in stores?",
+    "What kind of food do you usually eat?",
+    "Do you enjoy exercising?",
+    "How often do you use the internet for studying?",
+    "Do you like watching films?"
+  ],
+
+  part2: [
+    "Describe a skill you would like to learn in the future.",
+    "Describe a place you would like to visit one day.",
+    "Describe a person who has influenced you.",
+    "Describe a book that you found interesting.",
+    "Describe a useful piece of advice someone gave you.",
+    "Describe a time when you learned something difficult.",
+    "Describe an activity you enjoy doing in your free time.",
+    "Describe a memorable day in your life.",
+    "Describe a teacher who helped you learn something important.",
+    "Describe a hobby you would like to develop.",
+    "Describe a time when you helped someone.",
+    "Describe a technology that is useful in your daily life.",
+    "Describe a beautiful place you have visited.",
+    "Describe a goal you would like to achieve.",
+    "Describe a meal you really enjoyed.",
+    "Describe a person you enjoy spending time with.",
+    "Describe something you would like to buy in the future.",
+    "Describe a time when you were proud of yourself.",
+    "Describe an interesting conversation you had.",
+    "Describe a change you would like to make in your life."
+  ],
+
+  part3: [
+    "Why do some people learn languages more successfully than others?",
+    "Do you think technology has changed the way people learn?",
+    "Should schools focus more on practical skills or academic subjects?",
+    "Why do people find it difficult to change their habits?",
+    "Do young people have enough opportunities to develop useful skills?",
+    "How has social media changed communication?",
+    "Do you think people read less because of technology?",
+    "What are the advantages of learning with other people?",
+    "Should students be allowed to use AI for their studies?",
+    "How can schools encourage students to think critically?",
+    "Do you think online education will become more popular?",
+    "Why do some people prefer living in cities?",
+    "How can governments encourage people to protect the environment?",
+    "Do you think modern life is more stressful than life in the past?",
+    "What makes a person successful?",
+    "Is success mainly the result of talent or hard work?",
+    "Why do people spend so much time on their phones?",
+    "How might workplaces change in the future?",
+    "Should young people be encouraged to travel?",
+    "What role does education play in reducing inequality?",
+    "Do advertisements influence people's decisions?",
+    "Why do some traditions disappear over time?",
+    "Should governments spend more money on public transport?",
+    "How can technology improve people's quality of life?",
+    "Do you think artificial intelligence will change education?",
+    "What are the disadvantages of depending too much on technology?",
+    "Why is critical thinking important in modern society?",
+    "Do people have enough free time nowadays?",
+    "How might communication change in the next twenty years?",
+    "What can individuals do to make society better?"
+  ]
+
+};
 
 
-    document.getElementById(
-      "ieltsResult"
-    ).innerHTML =
-      "🎉 IELTS Speaking practice completed!";
+// ========================================
+// IELTS QUESTION RANDOMIZER
+// ========================================
 
+let usedIELTSQuestions = new Set();
 
-    currentIELTSQuestion =
-      0;
+function getRandomIELTSQuestion(part) {
 
+  const questions = ieltsQuestionBank[part];
 
-    return;
-
+  if (!questions || questions.length === 0) {
+    return "";
   }
 
+  let available = questions.filter(
+    question => !usedIELTSQuestions.has(question)
+  );
 
-  showIELTSQuestion();
+  // If every question in this part has been used,
+  // start that part's bank again.
+  if (available.length === 0) {
+    questions.forEach(question => {
+      usedIELTSQuestions.delete(question);
+    });
 
+    available = questions;
+  }
 
-  document.getElementById(
-    "ieltsResult"
-  ).innerHTML =
-    "➡️ Next IELTS question.";
+  const randomIndex =
+    Math.floor(Math.random() * available.length);
 
+  const selectedQuestion =
+    available[randomIndex];
+
+  usedIELTSQuestions.add(selectedQuestion);
+
+  return selectedQuestion;
 }
+
+console.log("IELTS question bank loaded 🚀");
 
 
 
