@@ -1,11 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
 <title>LingoUp - English Learning</title>
 
+
 <style>
+
+/* =========================
+   GENERAL
+========================= */
+
 * {
   box-sizing: border-box;
 }
@@ -16,6 +27,11 @@ body {
   background: #f5f7fb;
   color: #172033;
 }
+
+
+/* =========================
+   HEADER
+========================= */
 
 header {
   background: white;
@@ -42,10 +58,19 @@ nav a {
   font-weight: 600;
 }
 
+
+/* =========================
+   HERO
+========================= */
+
 .hero {
   padding: 70px 7%;
   text-align: center;
-  background: linear-gradient(135deg, #eef2ff, #ffffff);
+  background: linear-gradient(
+    135deg,
+    #eef2ff,
+    #ffffff
+  );
 }
 
 .hero h1 {
@@ -59,6 +84,11 @@ nav a {
   color: #5b6475;
 }
 
+
+/* =========================
+   BUTTON
+========================= */
+
 .btn {
   border: 0;
   border-radius: 12px;
@@ -70,11 +100,25 @@ nav a {
   margin: 5px;
 }
 
+.btn:hover {
+  opacity: 0.9;
+}
+
+
+/* =========================
+   CONTAINER
+========================= */
+
 .container {
   width: 86%;
   max-width: 1100px;
   margin: 35px auto;
 }
+
+
+/* =========================
+   CARD
+========================= */
 
 .card {
   background: white;
@@ -84,11 +128,22 @@ nav a {
   box-shadow: 0 5px 20px #0000000c;
 }
 
+
+/* =========================
+   GRID
+========================= */
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  grid-template-columns:
+    repeat(auto-fit, minmax(220px, 1fr));
   gap: 18px;
 }
+
+
+/* =========================
+   TEXTAREA
+========================= */
 
 textarea {
   width: 100%;
@@ -100,6 +155,11 @@ textarea {
   resize: vertical;
 }
 
+
+/* =========================
+   RESULT
+========================= */
+
 .result {
   margin-top: 15px;
   padding: 15px;
@@ -107,6 +167,11 @@ textarea {
   background: #f3f4f6;
   line-height: 1.6;
 }
+
+
+/* =========================
+   IELTS
+========================= */
 
 .ielts-question {
   font-size: 24px;
@@ -141,13 +206,24 @@ textarea {
   font-size: 14px;
 }
 
+
+/* =========================
+   FOOTER
+========================= */
+
 footer {
   text-align: center;
   padding: 35px;
   color: #687083;
 }
 
+
+/* =========================
+   MOBILE
+========================= */
+
 @media (max-width: 700px) {
+
   header {
     flex-direction: column;
     gap: 12px;
@@ -161,11 +237,20 @@ footer {
   .hero h1 {
     font-size: 34px;
   }
+
 }
+
 </style>
+
 </head>
 
+
 <body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
 
 <header>
 
@@ -174,14 +259,32 @@ footer {
   </div>
 
   <nav>
-    <a href="#speakmate">SpeakMate</a>
-    <a href="#ielts">IELTS</a>
-    <a href="#study">StudyAI</a>
-    <a href="#memory">MemoryAI</a>
+
+    <a href="#speakmate">
+      SpeakMate
+    </a>
+
+    <a href="#ielts">
+      IELTS
+    </a>
+
+    <a href="#study">
+      StudyAI
+    </a>
+
+    <a href="#memory">
+      MemoryAI
+    </a>
+
   </nav>
 
 </header>
 
+
+
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
@@ -190,143 +293,190 @@ footer {
   </h1>
 
   <p>
-    Speaking practice, IELTS preparation, AI learning and vocabulary revision.
+    Speaking practice, IELTS preparation,
+    AI learning and vocabulary revision.
   </p>
 
   <a href="#ielts">
+
     <button class="btn">
       Start IELTS
     </button>
+
   </a>
 
 </section>
 
 
+
 <div class="container">
 
 
-<!-- SPEAKMATE -->
 
-<section id="speakmate" class="card">
+<!-- =========================
+     SPEAKMATE
+========================= -->
+
+<section
+  id="speakmate"
+  class="card"
+>
 
   <h2>
     🎙️ SpeakMate
   </h2>
 
   <p>
-    Practice your English speaking and see your spoken words.
+    Practice your English speaking
+    and see your spoken words.
   </p>
 
-  <button class="btn" onclick="startSpeakMate()">
-    Start Speaking
+  <button
+    class="btn"
+    onclick="startSpeakMate()"
+  >
+    🎙️ Start Speaking
   </button>
 
-  <button class="btn" onclick="stopSpeakMate()">
-    Stop
+  <button
+    class="btn"
+    onclick="stopSpeakMate()"
+  >
+    ⏹️ Stop
   </button>
 
-  <div id="speakResult" class="result">
+  <div
+    id="speakResult"
+    class="result"
+  >
     Your speech will appear here.
   </div>
 
 </section>
 
 
-<!-- IELTS -->
 
-<section id="ielts" class="card">
+<!-- =========================
+     IELTS
+========================= -->
+
+<section
+  id="ielts"
+  class="card"
+>
 
   <h2>
     🎓 IELTS Speaking Examiner
   </h2>
 
   <p>
-    Practice a realistic IELTS-style speaking test with an examiner interface.
+    Practice a realistic IELTS-style
+    speaking test.
   </p>
 
 
-  <button class="btn" onclick="startIELTSTest()">
+  <button
+    class="btn"
+    onclick="startIELTSTest()"
+  >
     🚀 Start IELTS Test
   </button>
 
-  <button class="btn" onclick="speakIELTS()">
+
+  <button
+    class="btn"
+    onclick="speakIELTS()"
+  >
     🔊 Listen
   </button>
 
 
   <div style="margin-top:20px">
 
-    <span id="ieltsPart" class="ielts-part">
+
+    <span
+      id="ieltsPart"
+      class="ielts-part"
+    >
       Part 1
     </span>
 
 
-    <div id="ieltsQuestion" class="ielts-question">
-
-      Click “Start IELTS Test” to begin.
-
+    <div
+      id="ieltsQuestion"
+      class="ielts-question"
+    >
+      Click "Start IELTS Test"
+      to begin.
     </div>
 
 
-    <div id="ieltsTimer" class="timer">
-
+    <div
+      id="ieltsTimer"
+      class="timer"
+    >
       ⏱️ 00:00
-
     </div>
 
 
     <div class="controls">
 
+
       <button
         id="ieltsMicBtn"
         class="btn"
-        onclick="toggleIELTSRecording()">
-
+        onclick="toggleIELTSRecording()"
+      >
         🎙️ Start Speaking
-
       </button>
 
 
       <button
         class="btn"
-        onclick="stopIELTSRecording()">
-
+        onclick="stopIELTSRecording()"
+      >
         ⏹️ Stop
-
       </button>
 
 
       <button
         class="btn"
-        onclick="nextIELTSQuestion()">
-
+        onclick="nextIELTSQuestion()"
+      >
         ➡️ Next Question
-
       </button>
 
-    </div>
-
-
-    <div id="ieltsTranscript" class="result">
-
-      Your spoken answer will appear here...
 
     </div>
 
 
-    <div id="ieltsResult" class="result">
+    <div
+      id="ieltsTranscript"
+      class="result"
+    >
+      Your spoken answer
+      will appear here...
+    </div>
 
+
+    <div
+      id="ieltsResult"
+      class="result"
+    >
       IELTS practice is ready.
-
     </div>
+
 
   </div>
 
 
   <p class="small">
 
-    This prototype uses browser speech recognition for transcription.
-    Real AI examiner, scoring and detailed correction will be connected through
+    This prototype uses browser speech
+    recognition for transcription.
+
+    Real AI examiner, scoring and detailed
+    correction will be connected through
     a secure backend in the next stages.
 
   </p>
@@ -334,66 +484,81 @@ footer {
 </section>
 
 
-<!-- STUDYAI -->
 
-<section id="study" class="card">
+<!-- =========================
+     STUDYAI
+========================= -->
+
+<section
+  id="study"
+  class="card"
+>
 
   <h2>
     🧠 StudyAI
   </h2>
 
   <p>
-    Enter an English sentence and LingoUp will give a grammar explanation.
+    Enter an English sentence and
+    LingoUp will give a grammar explanation.
   </p>
 
 
   <textarea
     id="studyInput"
-    placeholder="Example: I have went to school yesterday.">
-  </textarea>
+    placeholder="Example: I have went to school yesterday."
+  ></textarea>
 
 
   <div class="controls">
 
     <button
       class="btn"
-      onclick="checkStudyAI()">
-
+      onclick="checkStudyAI()"
+    >
       Check Grammar
-
     </button>
 
   </div>
 
 
-  <div id="studyResult" class="result">
-
+  <div
+    id="studyResult"
+    class="result"
+  >
     Your explanation will appear here.
-
   </div>
 
 </section>
 
 
-<!-- MEMORYAI -->
 
-<section id="memory" class="card">
+<!-- =========================
+     MEMORYAI
+========================= -->
+
+<section
+  id="memory"
+  class="card"
+>
 
   <h2>
     🧩 MemoryAI
   </h2>
 
   <p>
-    Practice useful English words with quick revision.
+    Practice useful English words
+    with quick revision.
   </p>
 
 
   <div class="grid">
 
+
     <div class="card">
 
       <h3>
-        Vocabulary
+        📚 Vocabulary
       </h3>
 
       <p>
@@ -406,7 +571,7 @@ footer {
     <div class="card">
 
       <h3>
-        Revision
+        🔄 Revision
       </h3>
 
       <p>
@@ -419,7 +584,7 @@ footer {
     <div class="card">
 
       <h3>
-        Mini Test
+        📝 Mini Test
       </h3>
 
       <p>
@@ -428,12 +593,16 @@ footer {
 
     </div>
 
+
   </div>
 
 </section>
 
 
-<!-- REAL LIFE -->
+
+<!-- =========================
+     REAL LIFE ENGLISH
+========================= -->
 
 <section class="card">
 
@@ -442,22 +611,35 @@ footer {
   </h2>
 
   <p>
-    Practice English for everyday situations such as shopping, travel,
-    school and conversations.
+    Practice English for everyday situations
+    such as shopping, travel, school
+    and conversations.
   </p>
 
 </section>
 
 
+
 </div>
 
 
+
+<!-- =========================
+     FOOTER
+========================= -->
+
 <footer>
 
-  © 2026 LingoUp — English Learning Platform
+  © 2026 LingoUp —
+  English Learning Platform
 
 </footer>
 
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
 
 <script>
 
@@ -550,6 +732,7 @@ function startSpeakMate() {
 }
 
 
+
 function stopSpeakMate() {
 
   if (speakRecognition) {
@@ -572,9 +755,8 @@ function stopSpeakMate() {
 
 
 // ========================================
-// IELTS SPEAKING
+// IELTS QUESTIONS
 // ========================================
-
 
 const ieltsQuestions = [
 
@@ -629,38 +811,36 @@ const ieltsQuestions = [
 ];
 
 
-let currentIELTSQuestion =
-  0;
 
-let ieltsTimerInterval =
-  null;
+// ========================================
+// IELTS VARIABLES
+// ========================================
 
-let ieltsSeconds =
-  0;
+let currentIELTSQuestion = 0;
 
-let ieltsRecognition =
-  null;
+let ieltsTimerInterval = null;
 
-let ieltsIsRecording =
-  false;
+let ieltsSeconds = 0;
+
+let ieltsRecognition = null;
+
+let ieltsIsRecording = false;
 
 
 
+// ========================================
 // START IELTS
+// ========================================
 
 function startIELTSTest() {
 
-  currentIELTSQuestion =
-    0;
+  currentIELTSQuestion = 0;
 
-  ieltsSeconds =
-    0;
-
+  ieltsSeconds = 0;
 
   showIELTSQuestion();
 
   startIELTSTimer();
-
 
   document.getElementById(
     "ieltsResult"
@@ -671,7 +851,9 @@ function startIELTSTest() {
 
 
 
-// SHOW QUESTION
+// ========================================
+// SHOW IELTS QUESTION
+// ========================================
 
 function showIELTSQuestion() {
 
@@ -708,9 +890,412 @@ function showIELTSQuestion() {
 
 
 
-// TIMER
+// ========================================
+// IELTS TIMER
+// ========================================
 
 function startIELTSTimer() {
 
   clearInterval(
-   
+    ieltsTimerInterval
+  );
+
+
+  ieltsTimerInterval =
+    setInterval(
+      function() {
+
+        ieltsSeconds++;
+
+
+        const minutes =
+          Math.floor(
+            ieltsSeconds / 60
+          );
+
+
+        const seconds =
+          ieltsSeconds % 60;
+
+
+        document.getElementById(
+          "ieltsTimer"
+        ).textContent =
+          "⏱️ " +
+          String(minutes).padStart(
+            2,
+            "0"
+          ) +
+          ":" +
+          String(seconds).padStart(
+            2,
+            "0"
+          );
+
+
+      },
+      1000
+    );
+
+}
+
+
+
+// ========================================
+// SPEAK IELTS QUESTION
+// ========================================
+
+function speakIELTS() {
+
+  const question =
+    document.getElementById(
+      "ieltsQuestion"
+    ).textContent;
+
+
+  if (
+    "speechSynthesis" in window
+  ) {
+
+    window.speechSynthesis.cancel();
+
+
+    const speech =
+      new SpeechSynthesisUtterance(
+        question
+      );
+
+
+    speech.lang =
+      "en-US";
+
+
+    speech.rate =
+      0.9;
+
+
+    speech.pitch =
+      1;
+
+
+    window.speechSynthesis.speak(
+      speech
+    );
+
+  }
+
+}
+
+
+
+// ========================================
+// IELTS RECORDING TOGGLE
+// ========================================
+
+function toggleIELTSRecording() {
+
+  if (ieltsIsRecording) {
+
+    stopIELTSRecording();
+
+  } else {
+
+    startIELTSRecording();
+
+  }
+
+}
+
+
+
+// ========================================
+// START IELTS RECORDING
+// ========================================
+
+function startIELTSRecording() {
+
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+
+  if (!SpeechRecognition) {
+
+    alert(
+      "Please use Google Chrome for speech recognition."
+    );
+
+    return;
+  }
+
+
+  ieltsRecognition =
+    new SpeechRecognition();
+
+
+  ieltsRecognition.lang =
+    "en-US";
+
+
+  ieltsRecognition.continuous =
+    true;
+
+
+  ieltsRecognition.interimResults =
+    true;
+
+
+  ieltsIsRecording =
+    true;
+
+
+  document.getElementById(
+    "ieltsMicBtn"
+  ).textContent =
+    "🎙️ Listening...";
+
+
+  ieltsRecognition.onresult =
+    function(event) {
+
+      let text = "";
+
+
+      for (
+        let i = event.resultIndex;
+        i < event.results.length;
+        i++
+      ) {
+
+        text +=
+          event.results[i][0].transcript +
+          " ";
+
+      }
+
+
+      document.getElementById(
+        "ieltsTranscript"
+      ).textContent =
+        text.trim() ||
+        "Listening...";
+
+    };
+
+
+  ieltsRecognition.onerror =
+    function() {
+
+      document.getElementById(
+        "ieltsResult"
+      ).innerHTML =
+        "⚠️ Microphone or speech recognition error.";
+
+    };
+
+
+  ieltsRecognition.onend =
+    function() {
+
+      if (ieltsIsRecording) {
+
+        try {
+
+          ieltsRecognition.start();
+
+        } catch (error) {
+
+        }
+
+      }
+
+    };
+
+
+  ieltsRecognition.start();
+
+
+  document.getElementById(
+    "ieltsResult"
+  ).innerHTML =
+    "🎙️ I'm listening. Speak naturally.";
+
+}
+
+
+
+// ========================================
+// STOP IELTS RECORDING
+// ========================================
+
+function stopIELTSRecording() {
+
+  ieltsIsRecording =
+    false;
+
+
+  if (ieltsRecognition) {
+
+    ieltsRecognition.stop();
+
+    ieltsRecognition =
+      null;
+
+  }
+
+
+  document.getElementById(
+    "ieltsMicBtn"
+  ).textContent =
+    "🎙️ Start Speaking";
+
+
+  document.getElementById(
+    "ieltsResult"
+  ).innerHTML =
+    "✅ Speaking finished.";
+
+}
+
+
+
+// ========================================
+// NEXT IELTS QUESTION
+// ========================================
+
+function nextIELTSQuestion() {
+
+  stopIELTSRecording();
+
+
+  currentIELTSQuestion++;
+
+
+  if (
+    currentIELTSQuestion >=
+    ieltsQuestions.length
+  ) {
+
+    clearInterval(
+      ieltsTimerInterval
+    );
+
+
+    document.getElementById(
+      "ieltsResult"
+    ).innerHTML =
+      "🎉 IELTS Speaking practice completed!";
+
+
+    currentIELTSQuestion =
+      0;
+
+
+    return;
+
+  }
+
+
+  showIELTSQuestion();
+
+
+  document.getElementById(
+    "ieltsResult"
+  ).innerHTML =
+    "➡️ Next IELTS question.";
+
+}
+
+
+
+// ========================================
+// STUDYAI
+// ========================================
+
+function checkStudyAI() {
+
+  const input =
+    document.getElementById(
+      "studyInput"
+    ).value.trim();
+
+
+  const result =
+    document.getElementById(
+      "studyResult"
+    );
+
+
+  if (!input) {
+
+    result.innerHTML =
+      "✏️ Please enter an English sentence.";
+
+    return;
+
+  }
+
+
+  if (
+    input
+      .toLowerCase()
+      .includes(
+        "i have went"
+      )
+  ) {
+
+    result.innerHTML =
+
+      "❌ <b>Incorrect:</b> " +
+      "I have went to school yesterday." +
+
+      "<br><br>" +
+
+      "✅ <b>Correct:</b> " +
+      "I went to school yesterday." +
+
+      "<br><br>" +
+
+      "📚 <b>Explanation:</b> " +
+      "We use the Past Simple with a " +
+      "finished past time such as " +
+      "<b>yesterday</b>." +
+
+      "<br><br>" +
+
+      "💡 <b>Rule:</b> " +
+      "yesterday + Past Simple.";
+
+  } else {
+
+    result.innerHTML =
+
+      "✅ Your sentence has been checked." +
+
+      "<br><br>" +
+
+      "For deeper AI grammar analysis, " +
+      "LingoUp will connect to a real " +
+      "AI backend.";
+
+  }
+
+}
+
+
+
+// ========================================
+// LINGOUP READY
+// ========================================
+
+console.log(
+  "LingoUp is ready 🚀"
+);
+
+
+</script>
+
+
+</body>
+
+  </html>
