@@ -1,1 +1,4140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>LingoUp — AI English Learning</title>
+
+<style>
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb;
+  color: #172033;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: auto;
+  padding: 14px 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 20px;
+}
+
+.logo {
+  font-size: 25px;
+  font-weight: 800;
+  color: #2563eb;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+nav a {
+  text-decoration: none;
+  color: #374151;
+  padding: 9px 12px;
+  border-radius: 9px;
+  font-size: 14px;
+}
+
+nav a:hover {
+  background: #eff6ff;
+  color: #2563eb;
+}
+
+
+/* =========================
+   HERO
+========================= */
+
+.hero {
+  max-width: 1200px;
+  margin: 25px auto;
+  padding: 65px 25px;
+
+  border-radius: 25px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #dbeafe,
+      #eff6ff
+    );
+
+  text-align: center;
+}
+
+.hero h1 {
+  margin: 0 0 15px;
+  font-size: 48px;
+}
+
+.hero p {
+  max-width: 760px;
+  margin: 0 auto 25px;
+
+  line-height: 1.7;
+  color: #4b5563;
+}
+
+
+/* =========================
+   MAIN
+========================= */
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 0 20px 60px;
+}
+
+.card {
+  background: white;
+  border-radius: 20px;
+  padding: 25px;
+  margin: 25px 0;
+
+  box-shadow:
+    0 5px 25px rgba(0,0,0,0.06);
+}
+
+.card h2 {
+  margin-top: 0;
+}
+
+
+/* =========================
+   GRID
+========================= */
+
+.grid {
+  display: grid;
+
+  grid-template-columns:
+    repeat(
+      auto-fit,
+      minmax(250px, 1fr)
+    );
+
+  gap: 18px;
+}
+
+.feature {
+  padding: 20px;
+
+  border: 1px solid #e5e7eb;
+  border-radius: 16px;
+
+  background: #ffffff;
+}
+
+
+/* =========================
+   BUTTONS
+========================= */
+
+.btn {
+  border: none;
+
+  background: #2563eb;
+  color: white;
+
+  padding: 11px 17px;
+
+  border-radius: 10px;
+
+  cursor: pointer;
+
+  font-size: 15px;
+
+  margin: 4px;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+.btn.secondary {
+  background: #475569;
+}
+
+.btn.green {
+  background: #16a34a;
+}
+
+.btn.red {
+  background: #dc2626;
+}
+
+.btn.orange {
+  background: #ea580c;
+}
+
+.btn.light {
+  background: #e5e7eb;
+  color: #172033;
+}
+
+
+/* =========================
+   INPUTS
+========================= */
+
+textarea,
+input,
+select {
+
+  width: 100%;
+
+  padding: 13px;
+
+  border: 1px solid #d1d5db;
+
+  border-radius: 10px;
+
+  font: inherit;
+
+  margin: 7px 0;
+
+}
+
+textarea {
+
+  min-height: 130px;
+
+  resize: vertical;
+
+}
+
+
+/* =========================
+   RESULT
+========================= */
+
+.result {
+
+  margin-top: 15px;
+
+  padding: 18px;
+
+  border-radius: 14px;
+
+  background: #f8fafc;
+
+  line-height: 1.7;
+
+}
+
+
+/* =========================
+   IELTS
+========================= */
+
+.examiner {
+
+  padding: 22px;
+
+  border-radius: 16px;
+
+  background: #eff6ff;
+
+  font-size: 21px;
+
+  line-height: 1.6;
+
+  margin: 15px 0;
+
+}
+
+.part {
+
+  display: inline-block;
+
+  background: #2563eb;
+
+  color: white;
+
+  padding: 7px 12px;
+
+  border-radius: 20px;
+
+  font-size: 13px;
+
+  font-weight: bold;
+
+}
+
+.timer {
+
+  font-size: 30px;
+
+  font-weight: 800;
+
+  text-align: center;
+
+  padding: 15px;
+
+  color: #2563eb;
+
+}
+
+
+/* =========================
+   FEEDBACK
+========================= */
+
+.feedback-box {
+
+  margin: 12px 0;
+
+  padding: 16px;
+
+  border-radius: 12px;
+
+  background: #f8fafc;
+
+  border-left: 4px solid #2563eb;
+
+}
+
+.error-card {
+
+  background: #fff7ed;
+
+  border-left: 4px solid #ea580c;
+
+  padding: 15px;
+
+  border-radius: 10px;
+
+  margin: 10px 0;
+
+}
+
+.good-card {
+
+  background: #f0fdf4;
+
+  border-left: 4px solid #16a34a;
+
+  padding: 15px;
+
+  border-radius: 10px;
+
+  margin: 10px 0;
+
+}
+
+
+/* =========================
+   QUESTION BANK
+========================= */
+
+.question-bank {
+
+  margin-top: 25px;
+
+  padding: 20px;
+
+  background: #f8fafc;
+
+  border-radius: 16px;
+
+}
+
+.question-item {
+
+  background: white;
+
+  padding: 15px;
+
+  border-radius: 12px;
+
+  margin: 10px 0;
+
+  border: 1px solid #e5e7eb;
+
+}
+
+
+/* =========================
+   UTILITIES
+========================= */
+
+.hidden {
+  display: none !important;
+}
+
+.small {
+  font-size: 13px;
+  color: #64748b;
+}
+
+.score {
+
+  font-size: 35px;
+
+  font-weight: 800;
+
+  color: #2563eb;
+
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+
+  text-align: center;
+
+  padding: 35px;
+
+  color: #64748b;
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 700px) {
+
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  .nav {
+
+    align-items: flex-start;
+
+    flex-direction: column;
+
+  }
+
+  nav {
+
+    width: 100%;
+
+  }
+
+  nav a {
+
+    font-size: 12px;
+
+  }
+
+  .card {
+
+    padding: 18px;
+
+  }
+
+  .examiner {
+
+    font-size: 18px;
+
+  }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+
+<!-- =========================
+     HEADER
+========================= -->
+
+<header>
+
+  <div class="nav">
+
+    <div class="logo">
+      LingoUp 🚀
+    </div>
+
+    <nav>
+
+      <a href="#speakmate">
+        SpeakMate
+      </a>
+
+      <a href="#ielts">
+        IELTS
+      </a>
+
+      <a href="#studyai">
+        StudyAI
+      </a>
+
+      <a href="#memoryai">
+        MemoryAI
+      </a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<!-- =========================
+     HERO
+========================= -->
+
+<section class="hero">
+
+  <h1>
+    Learn English Smarter
+  </h1>
+
+  <p>
+    Speak naturally, practise IELTS,
+    understand every mistake and
+    improve your English with AI.
+  </p>
+
+  <a href="#ielts">
+
+    <button class="btn">
+      🎓 Start IELTS Speaking
+    </button>
+
+  </a>
+
+</section>
+
+
+<!-- =========================
+     MAIN CONTAINER
+========================= -->
+
+<div class="container">
+<!-- =====================================================
+     SPEAKMATE
+===================================================== -->
+
+<section id="speakmate" class="card">
+
+  <h2>🎙️ SpeakMate</h2>
+
+  <p>
+    Speak naturally. SpeakMate listens to your English,
+    converts your speech to text and prepares your answer
+    for detailed AI feedback.
+  </p>
+
+  <div class="feature">
+
+    <h3>🎤 Speaking Practice</h3>
+
+    <p id="speakmateStatus">
+      Ready. Press Start Speaking and speak naturally.
+    </p>
+
+    <button
+      id="speakmateStartBtn"
+      class="btn"
+      onclick="startSpeakMate()">
+      🎙️ Start Speaking
+    </button>
+
+    <button
+      id="speakmateStopBtn"
+      class="btn red"
+      onclick="stopSpeakMate()">
+      ⏹️ Stop
+    </button>
+
+  </div>
+
+
+  <div style="margin-top:20px;">
+
+    <label>
+      <strong>Your speech:</strong>
+    </label>
+
+    <textarea
+      id="speakmateText"
+      placeholder="Your spoken English will appear here...">
+    </textarea>
+
+  </div>
+
+
+  <div>
+
+    <button
+      class="btn green"
+      onclick="analyseSpeakMate()">
+      🤖 Analyse My English
+    </button>
+
+    <button
+      class="btn secondary"
+      onclick="speakText('speakmateText')">
+      🔊 Listen
+    </button>
+
+    <button
+      class="btn light"
+      onclick="clearSpeakMate()">
+      🗑️ Clear
+    </button>
+
+  </div>
+
+
+  <!-- AI FEEDBACK -->
+
+  <div
+    id="speakmateFeedback"
+    class="result hidden">
+
+    <h3>🤖 Detailed AI Feedback</h3>
+
+    <div id="speakGrammar"></div>
+
+    <div id="speakVocabulary"></div>
+
+    <div id="speakFluency"></div>
+
+    <div id="speakCoherence"></div>
+
+    <div id="speakPronunciation"></div>
+
+    <div id="speakImproved"></div>
+
+  </div>
+
+</section>
+<!-- =====================================================
+     IELTS SPEAKING AI EXAMINER
+===================================================== -->
+
+<section id="ielts" class="card">
+
+  <h2>🎓 IELTS Speaking AI Examiner</h2>
+
+  <p id="ieltsStatus">
+    The examiner will conduct a realistic IELTS Speaking practice test.
+  </p>
+
+  <!-- TEST PART -->
+
+  <div>
+    <span id="ieltsPart" class="part">
+      IELTS Speaking
+    </span>
+  </div>
+
+
+  <!-- EXAMINER -->
+
+  <div
+    id="ieltsExaminer"
+    class="examiner">
+
+    Good morning. Let's begin the IELTS Speaking test.
+
+  </div>
+
+
+  <!-- TIMER -->
+
+  <div
+    id="ieltsTimer"
+    class="timer">
+
+    ⏱️ 00:00
+
+  </div>
+
+
+  <!-- PART 2 PREPARATION -->
+
+  <div
+    id="ieltsPreparation"
+    class="result hidden">
+
+  </div>
+
+
+  <!-- USER ANSWER -->
+
+  <div
+    id="ieltsAnswer"
+    class="result">
+
+    Your answer will appear here...
+
+  </div>
+
+
+  <!-- CONTROLS -->
+
+  <div style="margin-top:18px;">
+
+    <button
+      id="ieltsStartBtn"
+      class="btn"
+      onclick="startIELTS()">
+
+      🚀 Start IELTS Test
+
+    </button>
+
+
+    <button
+      id="ieltsListenBtn"
+      class="btn secondary hidden"
+      onclick="speakExaminer()">
+
+      🔊 Examiner
+
+    </button>
+
+
+    <button
+      id="ieltsMicBtn"
+      class="btn hidden"
+      onclick="toggleIELTSMic()">
+
+      🎙️ Start Speaking
+
+    </button>
+
+
+    <button
+      id="ieltsStopMicBtn"
+      class="btn red hidden"
+      onclick="stopIELTSMic()">
+
+      ⏹️ Stop Speaking
+
+    </button>
+
+
+    <button
+      id="ieltsAnalyseBtn"
+      class="btn green hidden"
+      onclick="analyseIELTSAnswer()">
+
+      🤖 Analyse My Answer
+
+    </button>
+
+
+    <button
+      id="ieltsRepeatBtn"
+      class="btn orange hidden"
+      onclick="repeatCurrentAnswer()">
+
+      🔁 Repeat Answer
+
+    </button>
+
+
+    <button
+      id="ieltsNextBtn"
+      class="btn hidden"
+      onclick="nextIELTSQuestion()">
+
+      ➡️ Continue
+
+    </button>
+
+
+    <button
+      id="ieltsFinishBtn"
+      class="btn red hidden"
+      onclick="finishIELTS()">
+
+      🏁 Finish Test
+
+    </button>
+
+  </div>
+
+
+  <!-- =================================================
+       DETAILED AI FEEDBACK
+  ================================================= -->
+
+  <div
+    id="ieltsFeedback"
+    class="hidden"
+    style="margin-top:25px;">
+
+    <h3>
+      🤖 Detailed Speaking Analysis
+    </h3>
+
+
+    <!-- GRAMMAR -->
+
+    <div
+      id="feedbackGrammar"
+      class="feedback-box">
+
+    </div>
+
+
+    <!-- VOCABULARY -->
+
+    <div
+      id="feedbackVocabulary"
+      class="feedback-box">
+
+    </div>
+
+
+    <!-- FLUENCY -->
+
+    <div
+      id="feedbackFluency"
+      class="feedback-box">
+
+    </div>
+
+
+    <!-- COHERENCE -->
+
+    <div
+      id="feedbackCoherence"
+      class="feedback-box">
+
+    </div>
+
+
+    <!-- PRONUNCIATION -->
+
+    <div
+      id="feedbackPronunciation"
+      class="feedback-box">
+
+    </div>
+
+
+    <!-- IMPROVED ANSWER -->
+
+    <div
+      id="feedbackImproved"
+      class="good-card">
+
+    </div>
+
+
+    <button
+      class="btn green"
+      onclick="speakImprovedAnswer()">
+
+      🔊 Listen to Better Version
+
+    </button>
+
+  </div>
+
+
+  <!-- =================================================
+       FINAL IELTS REPORT
+  ================================================= -->
+
+  <div
+    id="ieltsFinalResult"
+    class="result hidden">
+
+    <h3>
+      🏆 IELTS Speaking Practice Report
+    </h3>
+
+
+    <div
+      <!-- =====================================================
+     STUDYAI
+===================================================== -->
+
+<section id="studyai" class="card">
+
+  <h2>📚 StudyAI</h2>
+
+  <p>
+    Write any English sentence. StudyAI will explain
+    your mistakes clearly and show you a more natural version.
+  </p>
+
+  <textarea
+    id="studyInput"
+    placeholder="Example: I have went to school yesterday.">
+  </textarea>
+
+  <button
+    class="btn"
+    onclick="analyseStudyAI()">
+
+    🤖 Analyse My Sentence
+
+  </button>
+
+  <button
+    class="btn light"
+    onclick="clearStudyAI()">
+
+    🗑️ Clear
+
+  </button>
+
+
+  <div
+    id="studyResult"
+    class="result hidden">
+
+  </div>
+
+</section>
+<!-- =====================================================
+     MEMORYAI
+===================================================== -->
+
+<section id="memoryai" class="card">
+
+  <h2>🧠 MemoryAI</h2>
+
+  <p>
+    Save difficult words and review your previous mistakes.
+    LingoUp will help you practise them again.
+  </p>
+
+
+  <div class="grid">
+
+    <!-- ADD WORD -->
+
+    <div class="feature">
+
+      <h3>➕ Add a Word</h3>
+
+      <input
+        id="memoryWord"
+        type="text"
+        placeholder="English word">
+
+      <input
+        id="memoryMeaning"
+        type="text"
+        placeholder="Meaning">
+
+      <button
+        class="btn green"
+        onclick="addMemoryWord()">
+
+        💾 Save Word
+
+      </button>
+
+    </div>
+
+
+    <!-- QUIZ -->
+
+    <div class="feature">
+
+      <h3>📝 Memory Quiz</h3>
+
+      <div
+        id="memoryQuiz"
+        class="result">
+
+        Press "Start Quiz" to practise your words.
+
+      </div>
+
+      <button
+        class="btn"
+        onclick="startMemoryQuiz()">
+
+        ▶️ Start Quiz
+
+      </button>
+
+    </div>
+
+  </div>
+
+
+  <!-- SAVED WORDS -->
+
+  <div
+    id="memoryList"
+    class="result"
+    style="margin-top:20px;">
+
+    No words saved yet.
+
+  </div>
+
+</section>
+</div>
+
+<footer>
+  <p>LingoUp 🚀 — Learn English smarter with AI.</p>
+  <p class="small">
+    IELTS results are practice estimates and are not official IELTS scores.
+  </p>
+</footer>
+<script>
+
+/* =====================================================
+   LingoUp — JavaScript
+   Part 1: Core configuration + speech recognition
+===================================================== */
+
+const LINGOUP_CONFIG = {
+  // Keyin haqiqiy backend manzilini shu yerga yozamiz.
+  // Hozircha bo'sh qoldiriladi.
+  API_BASE_URL: ""
+};
+
+
+/* =====================================================
+   GLOBAL STATE
+===================================================== */
+
+let speechRecognition = null;
+let isRecognizing = false;
+
+let currentSpeechTarget = null;
+let mediaRecorder = null;
+let audioChunks = [];
+
+let ieltsRecognition = null;
+let isIELTSRecognizing = false;
+
+let ieltsState = {
+  active: false,
+  part: null,
+  questionIndex: 0,
+  currentQuestion: null,
+  questions: [],
+  answers: [],
+  usedQuestionIds: [],
+  preparationSeconds: 60,
+  speakingSeconds: 120,
+  timerSeconds: 0,
+  timerInterval: null,
+  preparationInterval: null,
+  recordingStarted: false
+};
+
+
+/* =====================================================
+   SMALL HELPERS
+===================================================== */
+
+function $(id) {
+  return document.getElementById(id);
+}
+
+function show(id) {
+  const el = $(id);
+  if (el) el.classList.remove("hidden");
+}
+
+function hide(id) {
+  const el = $(id);
+  if (el) el.classList.add("hidden");
+}
+
+function setText(id, text) {
+  const el = $(id);
+  if (el) el.textContent = text;
+}
+
+function escapeHTML(value) {
+  return String(value ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function formatTime(seconds) {
+  const mins = Math.floor(seconds / 60);
+  const secs = seconds % 60;
+
+  return String(mins).padStart(2, "0") + ":" +
+         String(secs).padStart(2, "0");
+}
+
+
+/* =====================================================
+   API HELPER
+===================================================== */
+
+async function apiPost(endpoint, data) {
+
+  if (!LINGOUP_CONFIG.API_BASE_URL) {
+    throw new Error(
+      "AI backend is not connected yet. We will connect the real AI backend later."
+    );
+  }
+
+  const response = await fetch(
+    LINGOUP_CONFIG.API_BASE_URL + endpoint,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(data)
+    }
+  );
+
+  if (!response.ok) {
+    const text = await response.text();
+    throw new Error(text || "Server error.");
+  }
+
+  return await response.json();
+}
+
+
+/* =====================================================
+   SPEECH RECOGNITION SUPPORT
+===================================================== */
+
+function getSpeechRecognition() {
+
+  const SpeechRecognition =
+    window.SpeechRecognition ||
+    window.webkitSpeechRecognition;
+
+  if (!SpeechRecognition) {
+    return null;
+  }
+
+  const recognition = new SpeechRecognition();
+
+  recognition.lang = "en-US";
+  recognition.continuous = true;
+  recognition.interimResults = true;
+
+  return recognition;
+}
+
+
+/* =====================================================
+   SPEAKMATE — START
+===================================================== */
+
+function startSpeakMate() {
+
+  if (isRecognizing) {
+    return;
+  }
+
+  speechRecognition = getSpeechRecognition();
+
+  if (!speechRecognition) {
+
+    setText(
+      "speakmateStatus",
+      "Speech recognition is not supported in this browser. Try Chrome."
+    );
+
+    return;
+  }
+
+  const textarea = $("speakmateText");
+
+  currentSpeechTarget = textarea;
+
+  speechRecognition.onstart = function() {
+
+    isRecognizing = true;
+
+    setText(
+      "speakmateStatus",
+      "🎙️ Listening... Speak naturally."
+    );
+  };
+
+  speechRecognition.onresult = function(event) {
+
+    let finalText = "";
+    let interimText = "";
+
+    for (
+      let i = event.resultIndex;
+      i < event.results.length;
+      i++
+    ) {
+
+      const transcript =
+        event.results[i][0].transcript;
+
+      if (event.results[i].isFinal) {
+        finalText += transcript + " ";
+      } else {
+        interimText += transcript;
+      }
+    }
+
+    if (finalText) {
+
+      textarea.value =
+        (textarea.value + " " + finalText).trim();
+    }
+
+    setText(
+      "speakmateStatus",
+      interimText
+        ? "🎙️ " + interimText
+        : "🎙️ Listening..."
+    );
+  };
+
+  speechRecognition.onerror = function(event) {
+
+    console.log(
+      "SpeakMate speech recognition error:",
+      event.error
+    );
+
+    setText(
+      "speakmateStatus",
+      "⚠️ Microphone/recognition error: " +
+      event.error
+    );
+  };
+
+  speechRecognition.onend = function() {
+
+    isRecognizing = false;
+
+    if (
+      $("speakmateStatus") &&
+      $("speakmateStatus").textContent.includes("Listening")
+    ) {
+
+      setText(
+        "speakmateStatus",
+        "Ready. You can speak again."
+      );
+    }
+  };
+
+  speechRecognition.start();
+}
+
+
+/* =====================================================
+   SPEAKMATE — STOP
+===================================================== */
+
+function stopSpeakMate() {
+
+  if (
+    speechRecognition &&
+    isRecognizing
+  ) {
+
+    speechRecognition.stop();
+
+    isRecognizing = false;
+
+    setText(
+      "speakmateStatus",
+      "⏹️ Recording stopped."
+    );
+
+  } else {
+
+    setText(
+      "speakmateStatus",
+      "Nothing is currently recording."
+    );
+  }
+}
+
+
+/* =====================================================
+   SPEAK TEXT ALOUD
+===================================================== */
+
+function speakText(textareaId) {
+
+  const textarea = $(textareaId);
+
+  if (!textarea) {
+    return;
+  }
+
+  const text = textarea.value.trim();
+
+  if (!text) {
+    alert("There is no text to read.");
+    return;
+  }
+
+  if (!("speechSynthesis" in window)) {
+
+    alert(
+      "Speech synthesis is not supported in this browser."
+    );
+
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const utterance =
+    new SpeechSynthesisUtterance(text);
+
+  utterance.lang = "en-US";
+  utterance.rate = 0.95;
+  utterance.pitch = 1;
+
+  window.speechSynthesis.speak(utterance);
+}
+
+
+/* =====================================================
+   SPEAKMATE — CLEAR
+===================================================== */
+
+function clearSpeakMate() {
+
+  if ($("speakmateText")) {
+    $("speakmateText").value = "";
+  }
+
+  hide("speakmateFeedback");
+
+  setText(
+    "speakmateStatus",
+    "Ready. Press Start Speaking and speak naturally."
+  );
+}
+
+
+/* =====================================================
+   SPEAKMATE — AI ANALYSIS
+===================================================== */
+
+async function analyseSpeakMate() {
+
+  const text =
+    $("speakmateText").value.trim();
+
+  if (!text) {
+
+    alert(
+      "Please speak or enter an English sentence first."
+    );
+
+    return;
+  }
+
+  const feedback =
+    $("speakmateFeedback");
+
+  show("speakmateFeedback");
+
+  feedback.innerHTML = `
+    <h3>🤖 Detailed AI Feedback</h3>
+    <div class="feedback-box">
+      ⏳ Sending your English to the AI...
+    </div>
+  `;
+
+  try {
+
+    const result =
+      await apiPost("/api/speakmate/analyse", {
+        text: text
+      });
+
+    renderSpeakMateFeedback(result);
+
+  } catch (error) {
+
+    feedback.innerHTML = `
+      <h3>🤖 Detailed AI Feedback</h3>
+
+      <div class="error-card">
+        <strong>AI backend is not connected yet.</strong>
+        <p>
+          Your speech was captured successfully, but
+          real AI analysis will work after we connect
+          the secure backend.
+        </p>
+        <p class="small">
+          ${escapeHTML(error.message)}
+        </p>
+      </div>
+    `;
+  }
+}
+
+
+/* =====================================================
+   SPEAKMATE — RENDER FEEDBACK
+===================================================== */
+
+function renderSpeakMateFeedback(result) {
+
+  show("speakmateFeedback");
+
+  const grammar =
+    result.grammar || [];
+
+  const vocabulary =
+    result.vocabulary || [];
+
+  const fluency =
+    result.fluency || {};
+
+  const coherence =
+    result.coherence || {};
+
+  const pronunciation =
+    result.pronunciation || {};
+
+  $("speakGrammar").innerHTML = `
+    <div class="feedback-box">
+      <h4>📝 Grammar</h4>
+
+      ${
+        grammar.length
+          ? grammar.map(item => `
+              <div class="error-card">
+
+                <strong>❌ ${escapeHTML(item.original)}</strong>
+
+                <p>
+                  <strong>Correction:</strong>
+                  ${escapeHTML(item.correction)}
+                </p>
+
+                <p>
+                  <strong>Why:</strong>
+                  ${escapeHTML(item.why)}
+                </p>
+
+                ${
+                  item.rule
+                    ? `<p>
+                         <strong>Rule:</strong>
+                         ${escapeHTML(item.rule)}
+                       </p>`
+                    : ""
+                }
+
+              </div>
+            `).join("")
+          : `<div class="good-card">
+               ✅ No major grammar errors detected.
+             </div>`
+      }
+    </div>
+  `;
+
+  $("speakVocabulary").innerHTML = `
+    <div class="feedback-box">
+      <h4>📚 Vocabulary</h4>
+
+      ${
+        vocabulary.length
+          ? vocabulary.map(item => `
+              <div class="error-card">
+
+                <strong>
+                  ${escapeHTML(item.original)}
+                </strong>
+
+                <p>
+                  ${escapeHTML(item.issue || "")}
+                </p>
+
+                <p>
+                  <strong>Better:</strong>
+                  ${escapeHTML(item.better || "")}
+                </p>
+
+              </div>
+            `).join("")
+          : `<div class="good-card">
+               ✅ Your vocabulary is appropriate.
+             </div>`
+      }
+    </div>
+  `;
+
+  $("speakFluency").innerHTML = `
+    <div class="feedback-box">
+      <h4>🗣️ Fluency</h4>
+      <p>
+        <strong>Score:</strong>
+        ${escapeHTML(fluency.score ?? "N/A")}
+      </p>
+      <p>
+        ${escapeHTML(fluency.observations || "")}
+      </p>
+    </div>
+  `;
+
+  $("speakCoherence").innerHTML = `
+    <div class="feedback-box">
+      <h4>🔗 Coherence</h4>
+      <p>
+        <strong>Score:</strong>
+        ${escapeHTML(coherence.score ?? "N/A")}
+      </p>
+      <p>
+        ${escapeHTML(coherence.observations || "")}
+      </p>
+    </div>
+  `;
+
+  $("speakPronunciation").innerHTML = `
+    <div class="feedback-box">
+      <h4>🔊 Pronunciation</h4>
+      <p>
+        <strong>Score:</strong>
+        ${escapeHTML(pronunciation.score ?? "Not assessed")}
+      </p>
+      <p>
+        ${escapeHTML(
+          pronunciation.limitations ||
+          pronunciation.observations ||
+          "Pronunciation analysis requires audio analysis."
+        )}
+      </p>
+    </div>
+  `;
+
+  $("speakImproved").innerHTML = `
+    <div class="good-card">
+      <h4>✨ Better Version</h4>
+      <p>
+        ${escapeHTML(
+          result.improvedAnswer ||
+          "No improved version returned."
+        )}
+      </p>
+    </div>
+  `;
+}
+
+
+/* =====================================================
+   BROWSER MICROPHONE PERMISSION
+===================================================== */
+
+async function requestMicrophonePermission() {
+
+  if (!navigator.mediaDevices ||
+      !navigator.mediaDevices.getUserMedia) {
+
+    throw new Error(
+      "This browser does not support microphone access."
+    );
+  }
+
+  const stream =
+    await navigator.mediaDevices.getUserMedia({
+      audio: true
+    });
+
+  stream.getTracks().forEach(
+    track => track.stop()
+  );
+
+  return true;
+}
+
+
+/* =====================================================
+   AUDIO RECORDER
+===================================================== */
+
+async function startAudioRecording() {
+
+  await requestMicrophonePermission();
+
+  const stream =
+    await navigator.mediaDevices.getUserMedia({
+      audio: true
+    });
+
+  audioChunks = [];
+
+  let mimeType = "";
+
+  if (
+    MediaRecorder.isTypeSupported(
+      "audio/webm;codecs=opus"
+    )
+  ) {
+
+    mimeType = "audio/webm;codecs=opus";
+
+  } else if (
+    MediaRecorder.isTypeSupported("audio/webm")
+  ) {
+
+    mimeType = "audio/webm";
+  }
+
+  mediaRecorder =
+    new MediaRecorder(
+      stream,
+      mimeType ? { mimeType } : undefined
+    );
+
+  mediaRecorder.ondataavailable =
+    function(event) {
+
+      if (event.data.size > 0) {
+        audioChunks.push(event.data);
+      }
+    };
+
+  mediaRecorder.onstop =
+    function() {
+
+      stream.getTracks().forEach(
+        track => track.stop()
+      );
+    };
+
+  mediaRecorder.start();
+}
+
+
+/* =====================================================
+   STOP AUDIO RECORDING
+===================================================== */
+
+function stopAudioRecording() {
+
+  return new Promise(resolve => {
+
+    if (!mediaRecorder ||
+        mediaRecorder.state === "inactive") {
+
+      resolve(null);
+      return;
+    }
+
+    mediaRecorder.onstop = function() {
+
+      const blob =
+        new Blob(
+          audioChunks,
+          {
+            type:
+              mediaRecorder.mimeType ||
+              "audio/webm"
+          }
+        );
+
+      if (mediaRecorder.stream) {
+        mediaRecorder.stream
+          .getTracks()
+          .forEach(track => track.stop());
+      }
+
+      resolve(blob);
+    };
+
+    mediaRecorder.stop();
+  });
+}
+
+
+/* =====================================================
+   BLOB → BASE64
+===================================================== */
+
+function blobToBase64(blob) {
+
+  return new Promise((resolve, reject) => {
+
+    const reader =
+      new FileReader();
+
+    reader.onloadend = function() {
+
+      const result =
+        reader.result;
+
+      const base64 =
+        result.split(",")[1];
+
+      resolve(base64);
+    };
+
+    reader.onerror = reject;
+
+    reader.readAsDataURL(blob);
+  });
+}
+
+
+console.log("LingoUp JavaScript Part 1 loaded successfully.");
+/* =====================================================
+   IELTS SPEAKING EXAMINER — PART 2
+===================================================== */
+
+
+/* =====================================================
+   IELTS QUESTION BANK
+   80 IELTS-STYLE QUESTIONS
+===================================================== */
+
+const IELTS_QUESTIONS = [
+
+  /* ---------- PART 1 : 40 QUESTIONS ---------- */
+
+  {
+    id: 1,
+    part: 1,
+    topic: "Home",
+    question: "What kind of place do you live in?"
+  },
+  {
+    id: 2,
+    part: 1,
+    topic: "Home",
+    question: "What do you like most about your home?"
+  },
+  {
+    id: 3,
+    part: 1,
+    topic: "Home",
+    question: "Is there anything you would like to change about your home?"
+  },
+  {
+    id: 4,
+    part: 1,
+    topic: "Home",
+    question: "Do you prefer spending time at home or going out?"
+  },
+
+  {
+    id: 5,
+    part: 1,
+    topic: "Studies",
+    question: "What are you studying at the moment?"
+  },
+  {
+    id: 6,
+    part: 1,
+    topic: "Studies",
+    question: "What do you enjoy most about your studies?"
+  },
+  {
+    id: 7,
+    part: 1,
+    topic: "Studies",
+    question: "What subject would you like to learn more about?"
+  },
+  {
+    id: 8,
+    part: 1,
+    topic: "Studies",
+    question: "Do you prefer studying alone or with other people?"
+  },
+
+  {
+    id: 9,
+    part: 1,
+    topic: "Daily routine",
+    question: "What is your usual daily routine?"
+  },
+  {
+    id: 10,
+    part: 1,
+    topic: "Daily routine",
+    question: "What part of your day do you enjoy most?"
+  },
+  {
+    id: 11,
+    part: 1,
+    topic: "Daily routine",
+    question: "Do you usually make plans for your day?"
+  },
+  {
+    id: 12,
+    part: 1,
+    topic: "Daily routine",
+    question: "Is your daily routine usually flexible?"
+  },
+
+  {
+    id: 13,
+    part: 1,
+    topic: "Free time",
+    question: "What do you usually do in your free time?"
+  },
+  {
+    id: 14,
+    part: 1,
+    topic: "Free time",
+    question: "Do you prefer relaxing at home or going somewhere?"
+  },
+  {
+    id: 15,
+    part: 1,
+    topic: "Free time",
+    question: "How much free time do you usually have?"
+  },
+  {
+    id: 16,
+    part: 1,
+    topic: "Free time",
+    question: "What activity helps you relax?"
+  },
+
+  {
+    id: 17,
+    part: 1,
+    topic: "Food",
+    question: "What kind of food do you enjoy eating?"
+  },
+  {
+    id: 18,
+    part: 1,
+    topic: "Food",
+    question: "Do you prefer eating at home or in restaurants?"
+  },
+  {
+    id: 19,
+    part: 1,
+    topic: "Food",
+    question: "Is there a food you disliked when you were younger?"
+  },
+  {
+    id: 20,
+    part: 1,
+    topic: "Food",
+    question: "Do you enjoy cooking?"
+  },
+
+  {
+    id: 21,
+    part: 1,
+    topic: "Friends",
+    question: "What do you usually do with your friends?"
+  },
+  {
+    id: 22,
+    part: 1,
+    topic: "Friends",
+    question: "How often do you meet your friends?"
+  },
+  {
+    id: 23,
+    part: 1,
+    topic: "Friends",
+    question: "What qualities do you value in a friend?"
+  },
+  {
+    id: 24,
+    part: 1,
+    topic: "Friends",
+    question: "Do you prefer having many friends or a few close friends?"
+  },
+
+  {
+    id: 25,
+    part: 1,
+    topic: "Technology",
+    question: "How often do you use your phone?"
+  },
+  {
+    id: 26,
+    part: 1,
+    topic: "Technology",
+    question: "What do you mainly use the internet for?"
+  },
+  {
+    id: 27,
+    part: 1,
+    topic: "Technology",
+    question: "Is there a piece of technology you could not live without?"
+  },
+  {
+    id: 28,
+    part: 1,
+    topic: "Technology",
+    question: "Do you think you spend too much time online?"
+  },
+
+  {
+    id: 29,
+    part: 1,
+    topic: "Reading",
+    question: "Do you enjoy reading?"
+  },
+  {
+    id: 30,
+    part: 1,
+    topic: "Reading",
+    question: "What kind of books do you like?"
+  },
+  {
+    id: 31,
+    part: 1,
+    topic: "Reading",
+    question: "Did you read much when you were a child?"
+  },
+  {
+    id: 32,
+    part: 1,
+    topic: "Reading",
+    question: "Do you prefer printed books or digital books?"
+  },
+
+  {
+    id: 33,
+    part: 1,
+    topic: "Travel",
+    question: "Do you enjoy travelling?"
+  },
+  {
+    id: 34,
+    part: 1,
+    topic: "Travel",
+    question: "What kind of places do you like visiting?"
+  },
+  {
+    id: 35,
+    part: 1,
+    topic: "Travel",
+    question: "Who do you usually travel with?"
+  },
+  {
+    id: 36,
+    part: 1,
+    topic: "Travel",
+    question: "Is there a place you would really like to visit?"
+  },
+
+  {
+    id: 37,
+    part: 1,
+    topic: "Weather",
+    question: "What kind of weather do you like?"
+  },
+  {
+    id: 38,
+    part: 1,
+    topic: "Weather",
+    question: "Does the weather affect what you do?"
+  },
+  {
+    id: 39,
+    part: 1,
+    topic: "Weather",
+    question: "What is the weather usually like where you live?"
+  },
+  {
+    id: 40,
+    part: 1,
+    topic: "Weather",
+    question: "Do you prefer hot or cold weather?"
+  },
+
+
+  /* ---------- PART 2 : 8 CUE CARDS ---------- */
+
+  {
+    id: 41,
+    part: 2,
+    topic: "Person",
+    question: "Describe a person who has influenced you.",
+    cue: [
+      "who this person is",
+      "how you know this person",
+      "what this person has done",
+      "and explain why this person has influenced you"
+    ]
+  },
+
+  {
+    id: 42,
+    part: 2,
+    topic: "Place",
+    question: "Describe a place you would like to visit.",
+    cue: [
+      "where it is",
+      "what you know about it",
+      "what you would like to do there",
+      "and explain why you would like to visit it"
+    ]
+  },
+
+  {
+    id: 43,
+    part: 2,
+    topic: "Experience",
+    question: "Describe an experience that taught you something important.",
+    cue: [
+      "what the experience was",
+      "when it happened",
+      "what you learned",
+      "and explain why it was important"
+    ]
+  },
+
+  {
+    id: 44,
+    part: 2,
+    topic: "Object",
+    question: "Describe an object that is important to you.",
+    cue: [
+      "what it is",
+      "how you got it",
+      "how often you use it",
+      "and explain why it is important to you"
+    ]
+  },
+
+  {
+    id: 45,
+    part: 2,
+    topic: "Activity",
+    question: "Describe an activity you enjoy doing in your free time.",
+    cue: [
+      "what the activity is",
+      "when you usually do it",
+      "who you do it with",
+      "and explain why you enjoy it"
+    ]
+  },
+
+  {
+    id: 46,
+    part: 2,
+    topic: "Achievement",
+    question: "Describe something you achieved that made you feel proud.",
+    cue: [
+      "what you achieved",
+      "when you achieved it",
+      "how you achieved it",
+      "and explain why you felt proud"
+    ]
+  },
+
+  {
+    id: 47,
+    part: 2,
+    topic: "Learning",
+    question: "Describe a skill you would like to learn.",
+    cue: [
+      "what the skill is",
+      "why you want to learn it",
+      "how you would learn it",
+      "and explain how this skill could help you"
+    ]
+  },
+
+  {
+    id: 48,
+    part: 2,
+    topic: "Event",
+    question: "Describe an event that you remember well.",
+    cue: [
+      "what the event was",
+      "when and where it happened",
+      "who was there",
+      "and explain why you remember it"
+    ]
+  },
+
+
+  /* ---------- PART 3 : 32 QUESTIONS ---------- */
+
+  {
+    id: 49,
+    part: 3,
+    topic: "Education",
+    question: "How do you think education has changed in recent years?"
+  },
+  {
+    id: 50,
+    part: 3,
+    topic: "Education",
+    question: "What are the most important qualities of a good teacher?"
+  },
+  {
+    id: 51,
+    part: 3,
+    topic: "Education",
+    question: "Should students be allowed to choose more of what they study?"
+  },
+  {
+    id: 52,
+    part: 3,
+    topic: "Education",
+    question: "How can schools prepare young people for the future?"
+  },
+
+  {
+    id: 53,
+    part: 3,
+    topic: "Technology",
+    question: "How has technology changed the way people communicate?"
+  },
+  {
+    id: 54,
+    part: 3,
+    topic: "Technology",
+    question: "What are some disadvantages of relying heavily on technology?"
+  },
+  {
+    id: 55,
+    part: 3,
+    topic: "Technology",
+    question: "Do you think artificial intelligence will change education?"
+  },
+  {
+    id: 56,
+    part: 3,
+    topic: "Technology",
+    question: "How might technology affect people's jobs in the future?"
+  },
+
+  {
+    id: 57,
+    part: 3,
+    topic: "Work",
+    question: "What makes a job satisfying?"
+  },
+  {
+    id: 58,
+    part: 3,
+    topic: "Work",
+    question: "Is salary the most important factor when choosing a career?"
+  },
+  {
+    id: 59,
+    part: 3,
+    topic: "Work",
+    question: "How has working from home changed people's lives?"
+  },
+  {
+    id: 60,
+    part: 3,
+    topic: "Work",
+    question: "What skills will be important for workers in the future?"
+  },
+
+  {
+    id: 61,
+    part: 3,
+    topic: "Environment",
+    question: "What are the biggest environmental problems facing cities?"
+  },
+  {
+    id: 62,
+    part: 3,
+    topic: "Environment",
+    question: "What can individuals do to protect the environment?"
+  },
+  {
+    id: 63,
+    part: 3,
+    topic: "Environment",
+    question: "Should governments do more to reduce pollution?"
+  },
+  {
+    id: 64,
+    part: 3,
+    topic: "Environment",
+    question: "Why do some people find it difficult to change environmentally harmful habits?"
+  },
+
+  {
+    id: 65,
+    part: 3,
+    topic: "Travel",
+    question: "How can tourism benefit local communities?"
+  },
+  {
+    id: 66,
+    part: 3,
+    topic: "Travel",
+    question: "What problems can large numbers of tourists cause?"
+  },
+  {
+    id: 67,
+    part: 3,
+    topic: "Travel",
+    question: "Do you think international travel will become more common?"
+  },
+  {
+    id: 68,
+    part: 3,
+    topic: "Travel",
+    question: "How can people travel more responsibly?"
+  },
+
+  {
+    id: 69,
+    part: 3,
+    topic: "Health",
+    question: "Why do some people find it difficult to maintain a healthy lifestyle?"
+  },
+  {
+    id: 70,
+    part: 3,
+    topic: "Health",
+    question: "What role should schools play in teaching children about health?"
+  },
+  {
+    id: 71,
+    part: 3,
+    topic: "Health",
+    question: "How might people's lifestyles change in the future?"
+  },
+  {
+    id: 72,
+    part: 3,
+    topic: "Health",
+    question: "What can communities do to encourage healthier lifestyles?"
+  },
+
+  {
+    id: 73,
+    part: 3,
+    topic: "Society",
+    question: "Why are strong communities important?"
+  },
+  {
+    id: 74,
+    part: 3,
+    topic: "Society",
+    question: "How has social media affected relationships?"
+  },
+  {
+    id: 75,
+    part: 3,
+    topic: "Society",
+    question: "Do young people and older people have different priorities?"
+  },
+  {
+    id: 76,
+    part: 3,
+    topic: "Society",
+    question: "What can people do to become more involved in their communities?"
+  },
+
+  {
+    id: 77,
+    part: 3,
+    topic: "Culture",
+    question: "Why is it important to preserve traditional culture?"
+  },
+  {
+    id: 78,
+    part: 3,
+    topic: "Culture",
+    question: "How can young people learn about their culture?"
+  },
+  {
+    id: 79,
+    part: 3,
+    topic: "Culture",
+    question: "Do you think globalisation is changing local cultures?"
+  },
+  {
+    id: 80,
+    part: 3,
+    topic: "Culture",
+    question: "What role does language play in preserving culture?"
+  }
+
+];
+
+
+/* =====================================================
+   QUESTION UTILITIES
+===================================================== */
+
+function shuffleArray(array) {
+
+  const copy = [...array];
+
+  for (
+    let i = copy.length - 1;
+    i > 0;
+    i--
+  ) {
+
+    const j =
+      Math.floor(Math.random() * (i + 1));
+
+    [copy[i], copy[j]] =
+      [copy[j], copy[i]];
+  }
+
+  return copy;
+}
+
+
+function getRandomUnusedQuestion(part) {
+
+  const available =
+    IELTS_QUESTIONS.filter(
+      q =>
+        q.part === part &&
+        !ieltsState.usedQuestionIds.includes(q.id)
+    );
+
+  if (!available.length) {
+    return null;
+  }
+
+  const shuffled =
+    shuffleArray(available);
+
+  const question =
+    shuffled[0];
+
+  ieltsState.usedQuestionIds.push(
+    question.id
+  );
+
+  return question;
+}
+
+
+/* =====================================================
+   IELTS TEST SETUP
+===================================================== */
+
+function prepareIELTSTest() {
+
+  ieltsState.questions = [];
+  ieltsState.answers = [];
+  ieltsState.questionIndex = 0;
+  ieltsState.usedQuestionIds = [];
+
+  const part1 =
+    shuffleArray(
+      IELTS_QUESTIONS.filter(
+        q => q.part === 1
+      )
+    ).slice(0, 5);
+
+  const part2 =
+    shuffleArray(
+      IELTS_QUESTIONS.filter(
+        q => q.part === 2
+      )
+    ).slice(0, 1);
+
+  const part3 =
+    shuffleArray(
+      IELTS_QUESTIONS.filter(
+        q => q.part === 3
+      )
+    ).slice(0, 5);
+
+  ieltsState.questions = [
+    ...part1,
+    ...part2,
+    ...part3
+  ];
+
+  ieltsState.usedQuestionIds =
+    ieltsState.questions.map(
+      q => q.id
+    );
+}
+
+
+/* =====================================================
+   START IELTS
+===================================================== */
+
+function startIELTS() {
+
+  prepareIELTSTest();
+
+  ieltsState.active = true;
+
+  ieltsState.questionIndex = 0;
+
+  hide("ieltsStartBtn");
+  show("ieltsListenBtn");
+  show("ieltsMicBtn");
+
+  hide("ieltsStopMicBtn");
+  hide("ieltsAnalyseBtn");
+  hide("ieltsRepeatBtn");
+  hide("ieltsNextBtn");
+  hide("ieltsFinishBtn");
+
+  hide("ieltsFeedback");
+  hide("ieltsFinalResult");
+
+  setText(
+    "ieltsStatus",
+    "The IELTS Speaking practice test has started."
+  );
+
+  showCurrentIELTSQuestion();
+}
+
+
+/* =====================================================
+   SHOW CURRENT QUESTION
+===================================================== */
+
+function showCurrentIELTSQuestion() {
+
+  const question =
+    ieltsState.questions[
+      ieltsState.questionIndex
+    ];
+
+  if (!question) {
+    finishIELTS();
+    return;
+  }
+
+  ieltsState.currentQuestion =
+    question;
+
+  setText(
+    "ieltsPart",
+    "Part " + question.part
+  );
+
+  setText(
+    "ieltsExaminer",
+    question.question
+  );
+
+  $("ieltsAnswer").textContent =
+    "Your answer will appear here...";
+
+  hide("ieltsFeedback");
+  hide("ieltsAnalyseBtn");
+  hide("ieltsRepeatBtn");
+
+  if (question.part === 2) {
+
+    startPart2Preparation();
+
+  } else {
+
+    hide("ieltsPreparation");
+
+    resetIELTSTimer();
+
+    setText(
+      "ieltsStatus",
+      "Answer naturally. There is no need to rush."
+    );
+  }
+
+  speakExaminer();
+}
+
+
+/* =====================================================
+   EXAMINER VOICE
+===================================================== */
+
+function speakExaminer() {
+
+  const question =
+    ieltsState.currentQuestion;
+
+  if (!question) {
+    return;
+  }
+
+  if (!("speechSynthesis" in window)) {
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const utterance =
+    new SpeechSynthesisUtterance(
+      question.question
+    );
+
+  utterance.lang = "en-US";
+  utterance.rate = 0.9;
+  utterance.pitch = 1;
+
+  window.speechSynthesis.speak(
+    utterance
+  );
+}
+
+
+/* =====================================================
+   PART 2 — ONE MINUTE PREPARATION
+===================================================== */
+
+function startPart2Preparation() {
+
+  const question =
+    ieltsState.currentQuestion;
+
+  show("ieltsPreparation");
+
+  $("ieltsPreparation").innerHTML = `
+    <h3>📝 Part 2 — Preparation</h3>
+
+    <p>
+      You have <strong>1 minute</strong> to prepare.
+    </p>
+
+    <p>
+      You should talk about:
+    </p>
+
+    <ul>
+      ${
+        question.cue
+          .map(
+            item =>
+              `<li>${escapeHTML(item)}</li>`
+          )
+          .join("")
+      }
+    </ul>
+  `;
+
+  let remaining = 60;
+
+  setText(
+    "ieltsTimer",
+    "⏱️ Preparation: " +
+    formatTime(remaining)
+  );
+
+  clearInterval(
+    ieltsState.preparationInterval
+  );
+
+  ieltsState.preparationInterval =
+    setInterval(() => {
+
+      remaining--;
+
+      setText(
+        "ieltsTimer",
+        "⏱️ Preparation: " +
+        formatTime(remaining)
+      );
+
+      if (remaining <= 0) {
+
+        clearInterval(
+          ieltsState.preparationInterval
+        );
+
+        startPart2Speaking();
+      }
+
+    }, 1000);
+}
+
+
+/* =====================================================
+   PART 2 — TWO MINUTE SPEAKING
+===================================================== */
+
+function startPart2Speaking() {
+
+  hide("ieltsPreparation");
+
+  setText(
+    "ieltsStatus",
+    "🎙️ Your 2-minute speaking time has started."
+  );
+
+  ieltsState.timerSeconds = 120;
+
+  setText(
+    "ieltsTimer",
+    "⏱️ Speaking: " +
+    formatTime(120)
+  );
+
+  startIELTSMic();
+
+  clearInterval(
+    ieltsState.timerInterval
+  );
+
+  ieltsState.timerInterval =
+    setInterval(() => {
+
+      ieltsState.timerSeconds--;
+
+      setText(
+        "ieltsTimer",
+        "⏱️ Speaking: " +
+        formatTime(
+          ieltsState.timerSeconds
+        )
+      );
+
+      if (
+        ieltsState.timerSeconds <= 0
+      ) {
+
+        clearInterval(
+          ieltsState.timerInterval
+        );
+
+        stopIELTSMic();
+
+        setText(
+          "ieltsStatus",
+          "⏱️ Two minutes are finished. Your answer has been recorded."
+        );
+
+        show("ieltsAnalyseBtn");
+      }
+
+    }, 1000);
+}
+
+
+/* =====================================================
+   TIMER RESET
+===================================================== */
+
+function resetIELTSTimer() {
+
+  clearInterval(
+    ieltsState.timerInterval
+  );
+
+  clearInterval(
+    ieltsState.preparationInterval
+  );
+
+  ieltsState.timerSeconds = 0;
+
+  setText(
+    "ieltsTimer",
+    "⏱️ 00:00"
+  );
+}
+
+
+/* =====================================================
+   IELTS MICROPHONE
+===================================================== */
+
+function toggleIELTSMic() {
+
+  if (isIELTSRecognizing) {
+    stopIELTSMic();
+  } else {
+    startIELTSMic();
+  }
+}
+
+
+function startIELTSMic() {
+
+  if (isIELTSRecognizing) {
+    return;
+  }
+
+  ieltsRecognition =
+    getSpeechRecognition();
+
+  if (!ieltsRecognition) {
+
+    setText(
+      "ieltsStatus",
+      "Speech recognition is not supported. Try Chrome."
+    );
+
+    return;
+  }
+
+  const answerBox =
+    $("ieltsAnswer");
+
+  ieltsRecognition.lang =
+    "en-US";
+
+  ieltsRecognition.continuous =
+    true;
+
+  ieltsRecognition.interimResults =
+    true;
+
+  ieltsRecognition.onstart =
+    function() {
+
+      isIELTSRecognizing = true;
+
+      show("ieltsStopMicBtn");
+      hide("ieltsMicBtn");
+
+      setText(
+        "ieltsStatus",
+        "🎙️ Examiner is listening. Speak naturally."
+      );
+    };
+
+  ieltsRecognition.onresult =
+    function(event) {
+
+      let finalText = "";
+      let interimText = "";
+
+      for (
+        let i = event.resultIndex;
+        i < event.results.length;
+        i++
+      ) {
+
+        const text =
+          event.results[i][0]
+            .transcript;
+
+        if (
+          event.results[i].isFinal
+        ) {
+
+          finalText +=
+            text + " ";
+
+        } else {
+
+          interimText += text;
+        }
+      }
+
+      if (finalText) {
+
+        const existing =
+          answerBox.textContent ===
+          "Your answer will appear here..."
+            ? ""
+            : answerBox.textContent;
+
+        answerBox.textContent =
+          (existing + " " + finalText)
+            .trim();
+      }
+
+      if (interimText) {
+
+        setText(
+          "ieltsStatus",
+          "🎙️ Listening: " +
+          interimText
+        );
+      }
+    };
+
+  ieltsRecognition.onerror =
+    function(event) {
+
+      console.log(
+        "IELTS recognition error:",
+        event.error
+      );
+    };
+
+  ieltsRecognition.onend =
+    function() {
+
+      isIELTSRecognizing =
+        false;
+
+      hide("ieltsStopMicBtn");
+      show("ieltsMicBtn");
+    };
+
+  ieltsRecognition.start();
+}
+
+
+/* =====================================================
+   STOP IELTS MICROPHONE
+===================================================== */
+
+function stopIELTSMic() {
+
+  if (
+    ieltsRecognition &&
+    isIELTSRecognizing
+  ) {
+
+    ieltsRecognition.stop();
+
+    isIELTSRecognizing =
+      false;
+  }
+  hide("ieltsStopMicBtn");
+  show("ieltsMicBtn");
+
+  show("ieltsAnalyseBtn");
+
+  setText(
+    "ieltsStatus",
+    "⏹️ Speaking stopped. Analyse your answer."
+  );
+}
+
+
+/* =====================================================
+   SAVE ANSWER
+===================================================== */
+
+function saveCurrentIELTSAnswer() {
+
+  const question =
+    ieltsState.currentQuestion;
+
+  const text =
+    $("ieltsAnswer")
+      .textContent
+      .trim();
+
+  const existing =
+    ieltsState.answers.find(
+      item => item.questionId === question.id
+    );
+
+  if (existing) {
+
+    existing.answer = text;
+
+  } else {
+
+    ieltsState.answers.push({
+      questionId: question.id,
+      part: question.part,
+      question: question.question,
+      answer: text
+    });
+  }
+}
+
+
+/* =====================================================
+   ANALYSE IELTS ANSWER
+===================================================== */
+
+async function analyseIELTSAnswer() {
+
+  saveCurrentIELTSAnswer();
+
+  const answer =
+    $("ieltsAnswer")
+      .textContent
+      .trim();
+
+  if (
+    !answer ||
+    answer === "Your answer will appear here..."
+  ) {
+
+    alert(
+      "Please give an answer first."
+    );
+
+    return;
+  }
+
+  show("ieltsFeedback");
+
+  $("ieltsFeedback").scrollIntoView({
+    behavior: "smooth",
+    block: "start"
+  });
+
+  $("feedbackGrammar").innerHTML =
+    "⏳ Analysing grammar...";
+
+  $("feedbackVocabulary").innerHTML =
+    "⏳ Analysing vocabulary...";
+
+  $("feedbackFluency").innerHTML =
+    "⏳ Analysing fluency...";
+
+  $("feedbackCoherence").innerHTML =
+    "⏳ Analysing coherence...";
+
+  $("feedbackPronunciation").innerHTML =
+    "⏳ Analysing pronunciation...";
+
+  $("feedbackImproved").innerHTML =
+    "⏳ Preparing a better answer...";
+
+  try {
+
+    const result =
+      await apiPost(
+        "/api/ielts/analyse",
+        {
+          part:
+            ieltsState.currentQuestion.part,
+
+          question:
+            ieltsState.currentQuestion.question,
+
+          answer: answer
+        }
+      );
+
+    renderIELTSFeedback(result);
+
+    show("ieltsRepeatBtn");
+    show("ieltsNextBtn");
+
+  } catch (error) {
+
+    $("feedbackGrammar").innerHTML = `
+      <div class="error-card">
+        <strong>AI backend is not connected yet.</strong>
+        <p>
+          The answer was captured correctly.
+          Real IELTS analysis will become active
+          after we connect the secure AI backend.
+        </p>
+      </div>
+    `;
+
+    $("feedbackVocabulary").innerHTML = "";
+    $("feedbackFluency").innerHTML = "";
+    $("feedbackCoherence").innerHTML = "";
+    $("feedbackPronunciation").innerHTML = "";
+    $("feedbackImproved").innerHTML = "";
+
+    show("ieltsNextBtn");
+
+    console.log(error);
+  }
+}
+
+
+/* =====================================================
+   RENDER IELTS FEEDBACK
+===================================================== */
+
+function renderIELTSFeedback(result) {
+
+  const grammar =
+    result.grammar || [];
+
+  const vocabulary =
+    result.vocabulary || [];
+
+  const fluency =
+    result.fluency || {};
+
+  const coherence =
+    result.coherence || {};
+
+  const pronunciation =
+    result.pronunciation || {};
+
+  $("feedbackGrammar").innerHTML = `
+    <h4>📝 Grammar</h4>
+
+    ${
+      grammar.length
+        ? grammar.map(item => `
+            <div class="error-card">
+
+              <strong>
+                ❌ ${escapeHTML(item.original)}
+              </strong>
+
+              <p>
+                <strong>Correction:</strong>
+                ${escapeHTML(item.correction || "")}
+              </p>
+
+              <p>
+                <strong>Why:</strong>
+                ${escapeHTML(item.why || "")}
+              </p>
+
+              <p>
+                <strong>Rule:</strong>
+                ${escapeHTML(item.rule || "")}
+              </p>
+
+              ${
+                item.better
+                  ? `<p>
+                       <strong>IELTS version:</strong>
+                       ${escapeHTML(item.better)}
+                     </p>`
+                  : ""
+              }
+
+            </div>
+          `).join("")
+        : `<div class="good-card">
+             ✅ No major grammar problems detected.
+           </div>`
+    }
+  `;
+
+  $("feedbackVocabulary").innerHTML = `
+    <h4>📚 Lexical Resource</h4>
+
+    <p>
+      <strong>Score:</strong>
+      ${escapeHTML(vocabulary.score ?? "N/A")}
+    </p>
+
+    ${
+      Array.isArray(vocabulary.items)
+        ? vocabulary.items.map(item => `
+            <div class="error-card">
+              <strong>
+                ${escapeHTML(item.original || "")}
+              </strong>
+
+              <p>
+                ${escapeHTML(item.issue || "")}
+              </p>
+
+              <p>
+                <strong>Better:</strong>
+                ${escapeHTML(item.better || "")}
+              </p>
+            </div>
+          `).join("")
+        : ""
+    }
+  `;
+
+  $("feedbackFluency").innerHTML = `
+    <h4>🗣️ Fluency & Coherence</h4>
+
+    <p>
+      <strong>Fluency score:</strong>
+      ${escapeHTML(fluency.score ?? "N/A")}
+    </p>
+
+    <p>
+      ${escapeHTML(fluency.observations || "")}
+    </p>
+  `;
+
+  $("feedbackCoherence").innerHTML = `
+    <h4>🔗 Coherence</h4>
+
+    <p>
+      <strong>Score:</strong>
+      ${escapeHTML(coherence.score ?? "N/A")}
+    </p>
+
+    <p>
+      ${escapeHTML(coherence.observations || "")}
+    </p>
+  `;
+
+  $("feedbackPronunciation").innerHTML = `
+    <h4>🔊 Pronunciation</h4>
+
+    <p>
+      <strong>Score:</strong>
+      ${escapeHTML(
+        pronunciation.score ??
+        "Not assessed"
+      )}
+    </p>
+
+    <p>
+      ${escapeHTML(
+        pronunciation.observations ||
+        pronunciation.limitations ||
+        "Actual pronunciation scoring requires audio analysis."
+      )}
+    </p>
+  `;
+
+  $("feedbackImproved").innerHTML = `
+    <h4>✨ Improved IELTS Answer</h4>
+
+    <p>
+      ${escapeHTML(
+        result.improvedAnswer ||
+        "No improved answer was returned."
+      )}
+    </p>
+  `;
+  }
+  /* =====================================================
+   REPEAT CURRENT ANSWER
+===================================================== */
+
+function repeatCurrentAnswer() {
+
+  $("ieltsAnswer").textContent = "";
+
+  hide("ieltsFeedback");
+  hide("ieltsRepeatBtn");
+  hide("ieltsNextBtn");
+  show("ieltsMicBtn");
+
+  setText(
+    "ieltsStatus",
+    "🔁 Try the answer again. Improve your grammar, vocabulary and fluency."
+  );
+
+  startIELTSMic();
+}
+
+
+/* =====================================================
+   NEXT QUESTION
+===================================================== */
+
+function nextIELTSQuestion() {
+
+  saveCurrentIELTSAnswer();
+
+  hide("ieltsFeedback");
+  hide("ieltsRepeatBtn");
+  hide("ieltsNextBtn");
+  hide("ieltsAnalyseBtn");
+
+  resetIELTSTimer();
+
+  ieltsState.questionIndex++;
+
+  if (
+    ieltsState.questionIndex >=
+    ieltsState.questions.length
+  ) {
+
+    finishIELTS();
+
+    return;
+  }
+
+  showCurrentIELTSQuestion();
+}
+
+
+/* =====================================================
+   FINISH IELTS
+===================================================== */
+
+function finishIELTS() {
+
+  resetIELTSTimer();
+
+  if (isIELTSRecognizing) {
+    stopIELTSMic();
+  }
+
+  ieltsState.active = false;
+
+  hide("ieltsMicBtn");
+  hide("ieltsStopMicBtn");
+  hide("ieltsAnalyseBtn");
+  hide("ieltsRepeatBtn");
+  hide("ieltsNextBtn");
+
+  show("ieltsFinishBtn");
+  show("ieltsFinalResult");
+
+  setText(
+    "ieltsPart",
+    "Test Finished"
+  );
+
+  setText(
+    "ieltsExaminer",
+    "Thank you. This IELTS Speaking practice test is complete."
+  );
+
+  setText(
+    "ieltsTimer",
+    "🏁 Finished"
+  );
+
+  renderFinalIELTSReport();
+}
+
+
+/* =====================================================
+   FINAL REPORT
+===================================================== */
+
+function renderFinalIELTSReport() {
+
+  const answers =
+    ieltsState.answers;
+
+  $("finalBand").innerHTML = `
+    <div class="score">
+      Practice report
+    </div>
+
+    <p>
+      You completed
+      <strong>${answers.length}</strong>
+      recorded answer(s).
+    </p>
+
+    <p class="small">
+      The final band estimate will be calculated
+      by the AI backend from the four IELTS criteria:
+      Fluency & Coherence, Lexical Resource,
+      Grammatical Range & Accuracy, and Pronunciation.
+    </p>
+  `;
+
+  $("finalStrengths").innerHTML = `
+    <h4>💪 Strengths</h4>
+    <p>
+      Your detailed strengths will appear here
+      after AI analysis.
+    </p>
+  `;
+
+  $("finalWeaknesses").innerHTML = `
+    <h4>📌 Weaknesses</h4>
+    <p>
+      Your recurring weaknesses will appear here
+      after AI analysis.
+    </p>
+  `;
+
+  $("finalAdvice").innerHTML = `
+    <h4>🎯 Improvement Plan</h4>
+    <p>
+      The AI will create a personalised improvement
+      plan based on your repeated mistakes.
+    </p>
+  `;
+}
+
+
+/* =====================================================
+   IELTS QUESTION BANK SEARCH
+===================================================== */
+
+function searchIELTSQuestions() {
+
+  const input =
+    $("ieltsSearchInput");
+
+  const results =
+    $("ieltsSearchResults");
+
+  const query =
+    input.value
+      .trim()
+      .toLowerCase();
+
+  if (!query) {
+
+    results.innerHTML = `
+      <p class="small">
+        Type something above to search the question bank.
+      </p>
+    `;
+
+    return;
+  }
+
+  const matches =
+    IELTS_QUESTIONS.filter(q => {
+
+      const searchable =
+        (
+          q.topic +
+          " " +
+          q.question +
+          " Part " +
+          q.part
+        ).toLowerCase();
+
+      return searchable.includes(query);
+    });
+
+  if (!matches.length) {
+
+    results.innerHTML = `
+      <p>
+        No matching questions found.
+      </p>
+    `;
+
+    return;
+  }
+
+  results.innerHTML =
+    matches.map(q => `
+      <div class="question-item">
+
+        <span class="part">
+          Part ${q.part}
+        </span>
+
+        <h4>
+          ${escapeHTML(q.topic)}
+        </h4>
+
+        <p>
+          ${escapeHTML(q.question)}
+        </p>
+
+        ${
+          q.cue
+            ? `
+              <ul>
+                ${q.cue.map(
+                  item =>
+                    `<li>${escapeHTML(item)}</li>`
+                ).join("")}
+              </ul>
+            `
+            : ""
+        }
+
+        <button
+          class="btn"
+          onclick="practiceBankQuestion(${q.id})"
+        >
+          🎙️ Practise This
+        </button>
+
+      </div>
+    `).join("");
+  }
+  /* =====================================================
+   PRACTISE A QUESTION FROM QUESTION BANK
+===================================================== */
+
+function practiceBankQuestion(id) {
+
+  const question =
+    IELTS_QUESTIONS.find(
+      q => q.id === id
+    );
+
+  if (!question) {
+    return;
+  }
+
+  ieltsState.active = true;
+  ieltsState.currentQuestion =
+    question;
+
+  setText(
+    "ieltsPart",
+    "Part " + question.part
+  );
+
+  setText(
+    "ieltsExaminer",
+    question.question
+  );
+
+  $("ieltsAnswer").textContent =
+    "Your answer will appear here...";
+
+  hide("ieltsStartBtn");
+  show("ieltsListenBtn");
+  show("ieltsMicBtn");
+
+  hide("ieltsStopMicBtn");
+  hide("ieltsAnalyseBtn");
+  hide("ieltsFeedback");
+
+  if (question.part === 2) {
+    startPart2Preparation();
+  } else {
+    resetIELTSTimer();
+
+    setText(
+      "ieltsStatus",
+      "Practise this question naturally."
+    );
+  }
+
+  $("ielts").scrollIntoView({
+    behavior: "smooth"
+  });
+
+  speakExaminer();
+}
+
+
+/* =====================================================
+   LISTEN TO IMPROVED ANSWER
+===================================================== */
+
+function speakImprovedAnswer() {
+
+  const box =
+    $("feedbackImproved");
+
+  if (!box) {
+    return;
+  }
+
+  const text =
+    box.textContent
+      .replace("✨ Improved IELTS Answer", "")
+      .trim();
+
+  if (!text) {
+    return;
+  }
+
+  if (!("speechSynthesis" in window)) {
+    return;
+  }
+
+  window.speechSynthesis.cancel();
+
+  const utterance =
+    new SpeechSynthesisUtterance(text);
+
+  utterance.lang = "en-US";
+  utterance.rate = 0.9;
+  utterance.pitch = 1;
+
+  window.speechSynthesis.speak(
+    utterance
+  );
+}
+
+
+console.log(
+  "LingoUp IELTS Examiner loaded — 80 questions."
+);
+  /* =====================================================
+   STUDYAI
+===================================================== */
+
+async function analyseStudyAI() {
+
+  const input = $("studyInput");
+
+  if (!input) return;
+
+  const text = input.value.trim();
+
+  if (!text) {
+    alert("Please enter an English sentence first.");
+    return;
+  }
+
+  const resultBox = $("studyResult");
+
+  show("studyResult");
+
+  resultBox.innerHTML = `
+    <div class="feedback-box">
+      ⏳ StudyAI is analysing your sentence...
+    </div>
+  `;
+
+  try {
+
+    const result = await apiPost(
+      "/api/study",
+      {
+        text: text
+      }
+    );
+
+    renderStudyAI(result);
+
+  } catch (error) {
+
+    resultBox.innerHTML = `
+      <div class="error-card">
+
+        <strong>🤖 StudyAI</strong>
+
+        <p>
+          Your sentence is ready, but the real AI
+          backend has not been connected yet.
+        </p>
+
+        <p class="small">
+          After we connect the secure backend,
+          StudyAI will analyse the sentence in detail.
+        </p>
+
+      </div>
+    `;
+
+    console.log("StudyAI:", error);
+  }
+}
+
+
+/* =====================================================
+   STUDYAI — RENDER
+===================================================== */
+
+function renderStudyAI(result) {
+
+  const box = $("studyResult");
+
+  const original =
+    result.original ||
+    $("studyInput").value;
+
+  const correction =
+    result.correction ||
+    result.corrected ||
+    "";
+
+  const explanation =
+    result.explanation ||
+    result.why ||
+    "";
+
+  const rule =
+    result.rule ||
+    "";
+
+  const better =
+    result.better ||
+    result.naturalVersion ||
+    "";
+
+  box.innerHTML = `
+
+    <div class="feedback-box">
+
+      <h3>🤖 StudyAI Analysis</h3>
+
+      <div class="error-card">
+
+        <h4>❌ Your sentence</h4>
+
+        <p>
+          ${escapeHTML(original)}
+        </p>
+
+      </div>
+
+      <div class="good-card">
+
+        <h4>✅ Correct sentence</h4>
+
+        <p>
+          ${escapeHTML(correction)}
+        </p>
+
+      </div>
+
+      <div class="feedback-box">
+
+        <h4>📖 Why?</h4>
+
+        <p>
+          ${escapeHTML(explanation)}
+        </p>
+
+      </div>
+
+      ${
+        rule
+          ? `
+            <div class="feedback-box">
+
+              <h4>📚 Grammar Rule</h4>
+
+              <p>
+                ${escapeHTML(rule)}
+              </p>
+
+            </div>
+          `
+          : ""
+      }
+
+      ${
+        better
+          ? `
+            <div class="good-card">
+
+              <h4>✨ More Natural English</h4>
+
+              <p>
+                ${escapeHTML(better)}
+              </p>
+
+            </div>
+          `
+          : ""
+      }
+
+    </div>
+  `;
+}
+
+
+/* =====================================================
+   STUDYAI — CLEAR
+===================================================== */
+
+function clearStudyAI() {
+
+  if ($("studyInput")) {
+    $("studyInput").value = "";
+  }
+
+  hide("studyResult");
+}
+
+
+/* =====================================================
+   MEMORYAI — STORAGE
+===================================================== */
+
+const MEMORY_STORAGE_KEY =
+  "lingoup_memory_words";
+
+
+function getMemoryWords() {
+
+  try {
+
+    const saved =
+      localStorage.getItem(
+        MEMORY_STORAGE_KEY
+      );
+
+    if (!saved) {
+      return [];
+    }
+
+    const words =
+      JSON.parse(saved);
+
+    return Array.isArray(words)
+      ? words
+      : [];
+
+  } catch (error) {
+
+    console.log(
+      "Memory storage error:",
+      error
+    );
+
+    return [];
+  }
+}
+
+
+function saveMemoryWords(words) {
+
+  localStorage.setItem(
+    MEMORY_STORAGE_KEY,
+    JSON.stringify(words)
+  );
+}
+
+
+/* =====================================================
+   MEMORYAI — ADD WORD
+===================================================== */
+
+function addMemoryWord() {
+
+  const wordInput =
+    $("memoryWord");
+
+  const meaningInput =
+    $("memoryMeaning");
+
+  const word =
+    wordInput.value.trim();
+
+  const meaning =
+    meaningInput.value.trim();
+
+  if (!word || !meaning) {
+
+    alert(
+      "Please enter both the English word and its meaning."
+    );
+
+    return;
+  }
+
+  const words =
+    getMemoryWords();
+
+  const exists =
+    words.some(
+      item =>
+        item.word.toLowerCase() ===
+        word.toLowerCase()
+    );
+
+  if (exists) {
+
+    alert(
+      "This word is already in your MemoryAI list."
+    );
+
+    return;
+  }
+
+  words.push({
+
+    id:
+      Date.now(),
+
+    word:
+      word,
+
+    meaning:
+      meaning,
+
+    createdAt:
+      new Date().toISOString(),
+
+    correct:
+      0,
+
+    wrong:
+      0
+
+  });
+
+  saveMemoryWords(words);
+
+  wordInput.value = "";
+  meaningInput.value = "";
+
+  renderMemoryList();
+
+  alert(
+    "✅ Word saved to MemoryAI."
+  );
+}
+
+
+/* =====================================================
+   MEMORYAI — DISPLAY WORDS
+===================================================== */
+
+function renderMemoryList() {
+
+  const box =
+    $("memoryList");
+
+  if (!box) return;
+
+  const words =
+    getMemoryWords();
+
+  if (!words.length) {
+
+    box.innerHTML =
+      "No words saved yet.";
+
+    return;
+  }
+
+  box.innerHTML = `
+
+    <h3>🧠 Your Words</h3>
+
+    <p class="small">
+      ${words.length} word(s) saved.
+    </p>
+
+    ${
+
+      words.map(item => `
+
+        <div class="question-item">
+
+          <strong>
+            ${escapeHTML(item.word)}
+          </strong>
+
+          <p>
+            ${escapeHTML(item.meaning)}
+          </p>
+
+          <p class="small">
+            Correct: ${item.correct || 0}
+            ·
+            Wrong: ${item.wrong || 0}
+          </p>
+
+          <button
+            class="btn red"
+            onclick="deleteMemoryWord(${item.id})"
+          >
+            🗑️ Delete
+          </button>
+
+        </div>
+
+      `).join("")
+
+    }
+
+  `;
+}
+
+
+/* =====================================================
+   MEMORYAI — DELETE WORD
+===================================================== */
+
+function deleteMemoryWord(id) {
+
+  const words =
+    getMemoryWords();
+
+  const filtered =
+    words.filter(
+      item => item.id !== id
+    );
+
+  saveMemoryWords(filtered);
+
+  renderMemoryList();
+
+  $("memoryQuiz").textContent =
+    "Word deleted. Press Start Quiz to continue.";
+}
+
+
+/* =====================================================
+   MEMORYAI — QUIZ STATE
+===================================================== */
+
+let memoryQuizState = {
+
+  words: [],
+
+  current: null,
+
+  answered: false
+
+};
+
+
+/* =====================================================
+   MEMORYAI — START QUIZ
+===================================================== */
+
+function startMemoryQuiz() {
+
+  const words =
+    getMemoryWords();
+
+  const quizBox =
+    $("memoryQuiz");
+
+  if (!words.length) {
+
+    quizBox.innerHTML = `
+      <div class="error-card">
+        <strong>📚 No words yet.</strong>
+
+        <p>
+          Add some difficult English words first.
+        </p>
+      </div>
+    `;
+
+    return;
+  }
+
+  memoryQuizState.words =
+    shuffleArray(words);
+
+  memoryQuizState.current =
+    memoryQuizState.words[0];
+
+  memoryQuizState.answered =
+    false;
+
+  renderMemoryQuizQuestion();
+}
+
+
+/* =====================================================
+   MEMORYAI — SHOW QUIZ QUESTION
+===================================================== */
+
+function renderMemoryQuizQuestion() {
+
+  const quizBox =
+    $("memoryQuiz");
+
+  const current =
+    memoryQuizState.current;
+
+  if (!current) {
+
+    quizBox.innerHTML = `
+      <div class="good-card">
+        🎉 Quiz completed!
+      </div>
+    `;
+
+    return;
+  }
+
+  memoryQuizState.answered =
+    false;
+
+  quizBox.innerHTML = `
+
+    <h4>📝 What does this word mean?</h4>
+
+    <div class="examiner">
+      ${escapeHTML(current.word)}
+    </div>
+
+    <input
+      id="memoryQuizAnswer"
+      type="text"
+      placeholder="Type the meaning..."
+    >
+
+    <button
+      class="btn"
+      onclick="checkMemoryAnswer()"
+    >
+      ✅ Check Answer
+    </button>
+
+    <div
+      id="memoryQuizFeedback"
+      style="margin-top:15px;"
+    ></div>
+
+  `;
+}
+
+
+/* =====================================================
+   MEMORYAI — CHECK ANSWER
+===================================================== */
+
+function checkMemoryAnswer() {
+
+  if (memoryQuizState.answered) {
+    return;
+  }
+
+  const current =
+    memoryQuizState.current;
+
+  if (!current) {
+    return;
+  }
+
+  const input =
+    $("memoryQuizAnswer");
+
+  const answer =
+    input.value.trim();
+
+  if (!answer) {
+
+    alert(
+      "Please type an answer first."
+    );
+
+    return;
+  }
+
+  const expected =
+    current.meaning
+      .trim()
+      .toLowerCase();
+
+  const given =
+    answer
+      .trim()
+      .toLowerCase();
+
+  const isCorrect =
+    given === expected ||
+    given.includes(expected) ||
+    expected.includes(given);
+
+  memoryQuizState.answered =
+    true;
+
+  const words =
+    getMemoryWords();
+
+  const savedWord =
+    words.find(
+      item =>
+        item.id === current.id
+    );
+
+  if (savedWord) {
+
+    if (isCorrect) {
+
+      savedWord.correct =
+        (savedWord.correct || 0) + 1;
+
+    } else {
+
+      savedWord.wrong =
+        (savedWord.wrong || 0) + 1;
+    }
+
+    saveMemoryWords(words);
+  }
+
+  const feedback =
+    $("memoryQuizFeedback");
+
+  if (isCorrect) {
+
+    feedback.innerHTML = `
+      <div class="good-card">
+
+        <strong>✅ Correct!</strong>
+
+        <p>
+          ${escapeHTML(current.meaning)}
+        </p>
+
+        <button
+          class="btn"
+          onclick="nextMemoryQuizQuestion()"
+        >
+          ➡️ Next
+        </button>
+
+      </div>
+    `;
+
+  } else {
+
+    feedback.innerHTML = `
+      <div class="error-card">
+
+        <strong>❌ Not quite.</strong>
+
+        <p>
+          Correct meaning:
+          <strong>
+            ${escapeHTML(current.meaning)}
+          </strong>
+        </p>
+
+        <button
+          class="btn"
+          onclick="nextMemoryQuizQuestion()"
+        >
+          ➡️ Next
+        </button>
+
+      </div>
+    `;
+  }
+}
+
+
+/* =====================================================
+   MEMORYAI — NEXT QUESTION
+===================================================== */
+
+function nextMemoryQuizQuestion() {
+
+  memoryQuizState.words.shift();
+
+  memoryQuizState.current =
+    memoryQuizState.words[0] || null;
+
+  renderMemoryQuizQuestion();
+}
+
+
+/* =====================================================
+   MEMORYAI — INITIAL DISPLAY
+===================================================== */
+
+document.addEventListener(
+  "DOMContentLoaded",
+  function() {
+
+    renderMemoryList();
+
+    console.log(
+      "LingoUp StudyAI + MemoryAI loaded."
+    );
+
+  }
+);
+</script>
+</body>
+  </html>
